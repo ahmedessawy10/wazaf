@@ -17,4 +17,18 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+
+Route::middleware(['auth', 'is_employer'])->name('employer.')->group(function () {
+    Route::get('/employer/dashboard', function () {
+        return view('employer.dashboard');
+    })->name('dashboard');
+});
+// Route::middleware(['auth', 'is_candidate'])->name('candidate.')->group(function () {
+//     Route::get('/candidate/dashboard', function () {
+//         return view('candidate.dashboard');
+//     })->name('dashboard');
+// });
+Route::get('/candidate/dashboard', function () {
+    return view('user.candidate.dashboard');
+})->name('candidate.dashboard');
+require __DIR__ . '/auth.php';
