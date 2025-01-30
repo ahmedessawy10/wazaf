@@ -17,9 +17,18 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
             $table->string('summary')->nullable();
             $table->string('personal_website')->nullable();
+            $table->enum('military_status', ['yes', 'no'])->default('no')->nullable();
+            $table->enum('gender', ['male', 'female'])->default('male')->nullable();
             $table->date('date_of_birth');
-            $table->foreignId("exp_id")->canstrained('experience_levels');
-            $table->foreignId("edu_id")->canstrained('education_levels');
+            $table->boolean('avilability')->default(1)->nullable();
+            $table->string('phone')->nullable();
+            $table->string('country')->nullable();
+            $table->string('city')->nullable();
+            $table->string('address')->nullable();
+            $table->string('resume')->nullable();
+            $table->text('cover_letter')->nullable();
+            $table->foreignId("exp_id")->nullable()->canstrained('experience_levels');
+            $table->foreignId("edu_id")->nullable()->canstrained('education_levels');
             $table->timestamps();
         });
     }

@@ -1,0 +1,21 @@
+
+:root{
+--primary-color:#0d6efd;
+--gray-color:#5e6670;
+}
+
+header ul{
+    list-style:none;
+    
+}
+header ul a{
+    color:var(--gray-color);
+    text-decoration:none;
+    transition:.5s;
+    height:100%;
+}
+header ul a.active,header ul a:hover{
+
+    color:var(--primary-color);
+    border-top:2px solid var(--primary-color);
+}

@@ -18,11 +18,10 @@ return new class extends Migration
             $table->string('about_us')->nullable();
             $table->string('website_url')->nullable();
             $table->string('company_vision')->nullable();
-            $table->date('year_establish')->nullable();
+            $table->year('year_establish')->nullable();
             $table->enum('team_size', ['only_one', '10 Members', '10-20 Members', '20-50 Members', '50-100 Members', '100-200 Members'])->nullable();
             $table->string('logo')->nullable();
             $table->string('banner_image')->nullable();
-            $table->string('banne')->nullable();
             $table->string('latitude')->nullable();
             $table->string('longitude')->nullable();
             $table->string('address')->nullable();

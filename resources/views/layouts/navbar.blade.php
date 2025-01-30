@@ -1,26 +1,62 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    @yield('css')
-    <title>{{config('app.name', 'jop portal')}}</title>
-</head>
-
-<body>
-    @include('user.layouts.navbar')
+<nav class="navbar navbar-expand-lg bg-body-white">
+    <div class="container">
+        {{-- <a class="navbar-brand" href="#">Navbar</a> --}}
 
 
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " aria-current="page" href="#">Home</a>
+                </li>
 
 
-    @yield('centent')
+            </ul>
+        </div>
+
+        <div class="btn-group" role="group">
+            <button type="button" class="btn dropdown-toggle py-2 border-0" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                language
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Arabic</a></li>
+                <li><a class="dropdown-item" href="#">English</a></li>
+            </ul>
+        </div>
+
+    </div>
+</nav>
 
 
-    @include('user.layouts.footer')
-    @yield('script')
-</body>
+<header>
+    <div class="main-nav">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2  col-4">
 
-</html>
+                </div>
+                <div class="col-md-6  d-md-flex  d-none">
+
+                </div>
+
+                <div class="col-md-4">
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</header>
