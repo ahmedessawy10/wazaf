@@ -16,7 +16,7 @@
 </head>
 
 <body>
-   @include('layouts.navbar')
+    @include('layouts.navbar')
 
     @yield('centent')
 
@@ -28,7 +28,7 @@
     <script src="{{asset('vendor/bootstrap/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
-    @include('user.layouts.footer')
+    @include('layouts.footer')
     @yield('script')
 </body>
 
