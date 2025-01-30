@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Candidate extends Model
 {
     use HasFactory;
+
+
+
 }

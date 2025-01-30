@@ -29,7 +29,6 @@ return new class extends Migration
             $table->text('cover_letter')->nullable();
             $table->foreignId("exp_id")->nullable()->canstrained('experience_levels');
             $table->foreignId("edu_id")->nullable()->canstrained('education_levels');
-
             $table->timestamps();
         });
     }

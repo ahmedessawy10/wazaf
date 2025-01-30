@@ -29,5 +29,14 @@ class DatabaseSeeder extends Seeder
             EducationLevelSeeder::class,
             SkillSeeder::class,
         ]);
+
+        $this->call([
+            CategorySeeder::class,
+            IndustrySeeder::class,
+            OrganizationTypeSeeder::class,
+            ExperienceLevelSeeder::class,
+            EducationLevelSeeder::class,
+            SkillSeeder::class,
+        ]);
     }
 }
