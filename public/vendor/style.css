@@ -1,7 +1,8 @@
 
 :root{
---primary-color:#0d6efd;
+--primary-color:#0a65cc;
 --gray-color:#5e6670;
+--section-color:rgba(241, 242, 244, 0.6);
 }
 
 header ul{
@@ -19,3 +20,136 @@ header ul a.active,header ul a:hover{
     color:var(--primary-color);
     border-top:2px solid var(--primary-color);
 }
+
+
+.secondary-nav{
+    background-color:var(--primary-color);
+    padding: 20px 0 !important;
+    box-shadow: inset 0 -1px #e4e5e8;
+}
+
+.secondary-nav a .logo{
+    max-width: 180px;
+    width: 100%;
+}
+
+.secondary-nav  .links{
+    
+}
+.secondary-nav .links .login{
+
+    background-color:var(--primary-color);
+    color:#fff;
+    border : 1px solid #fff;
+    padding: 12px 24px 13px;
+    font-weight: 600;
+    transition:.5s;
+
+}
+.secondary-nav .links .login:hover{
+    background-color:#fff;
+    color:#000;
+
+}
+
+.secondary-nav .links .post-job{
+    background-color:#fff;
+    color:var(--primary-color);
+    padding: 12px 24px 13px;
+    font-weight: 600;
+    transition:.5s;
+
+}
+
+.secondary-nav .links .post-job:hover{
+    color:#000;
+    
+}
+
+.search-box{
+    width: 100% !important;
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border-radius: 5px;
+    border: 1px solid transparent;
+    padding: 12px !important;
+    border-radius:12px;
+}
+
+.search-box input{
+    border:none;
+}
+.search-box input:focus-visible{
+outline:none;
+}
+.search-box .search-icon{
+    color:var(--primary-color);
+    align-self: center;
+}
+
+.search-box #searchType{
+    width:120px;
+}
+
+.search-box .search-btn{
+    background-color:var(--primary-color);
+    color:#fff;
+    border : 1px solid #fff;
+    max-width:120px;
+    padding: 12px 24px 13px;
+    border-radius:12px;
+    font-weight: 600;
+    transition:.5s;
+}
+section {
+    background-color:var(--section-color);
+}
+
+.banner-image {
+    animation: 5s ease-in-out infinite  banner-image ;
+}
+
+@keyframes banner-image {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(20px);
+    }
+}
+.counter-section{
+   padding-top:20px ;
+   
+}
+
+.counter-section .counter-item{
+    background-color:#fff;
+}
+
+.counter-section .counter-icon{
+
+}
+.counter-section .counter-icon .icon{
+    background-color:#e7f0fa;
+    color: var(--primary-color);
+    width:72px;
+    height:72px;
+    border-radius:12px;
+}
+
+.counter-item:hover{
+    border:1px solid var(--primary-color);
+}
+.counter-item:hover i{
+    color:#fff;
+}
+.counter-item:hover .icon {
+    background-color:var(--primary-color);
+}
+
+
+.why-us{
+    height:100vh;
+    background-color:rgb(241 242 244);
+} 
