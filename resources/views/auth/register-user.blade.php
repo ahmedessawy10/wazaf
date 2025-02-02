@@ -137,7 +137,7 @@
                                         <span class="d-block body-font-3 text-gray-600 rt-mb-32">
                                             Already have an account?
                                             <span>
-                                                <a href="https://jobpilot.templatecookie.com/login">Log In</a>
+                                                <a href="{{route('login')}}">Log In</a>
                                             </span>
                                         </span>
                                     </div>
