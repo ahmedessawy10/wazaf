@@ -13,13 +13,19 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/">Home</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link " aria-current="page" href="#">about us</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " aria-current="page" href="#">candidates</a>
-                </li>
 
+                <li class="nav-item">
+                    <a class="nav-link " aria-current="page" href="#">Find Job</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " aria-current="page" href="#">Candidates</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " aria-current="page" href="#">Companies</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " aria-current="page" href="#">About Us</a>
+                </li>
 
             </ul>
         </div>
@@ -43,16 +49,17 @@
     <nav class="secondary-nav">
         <div class="container">
             <div class="row">
-                <div class="col-md-2  col-3">
-                    <a href="">
-                        <img src="logo" alt="" class="logo">
+                <div class="col-md-2  col-3 d-flex align-items-center justify-content-center">
+                    <a href="{{route('home')}}">
+                        <img src="{{asset('logo.png')}}" style="width:140px" class="logo">
                     </a>
                 </div>
-                <div class="col-md-7  d-md-flex  d-none">
+                <div class="col-md-7  d-lg-flex   d-none">
 
-                    <form action="#" method="POST" class="d-md-flex d-none w-100">
+                    <form action="#" method="POST" class="d-flex w-100">
                         <div class="search-box d-flex align-content-center ">
-                            <select name="searchType" id="searchType" class="form-select">
+                            <select name="searchType" id="searchType" class="form-select" style="width: 131px;
+    height: 52px;">
                                 <option value="jobs">jobs</option>
                                 <option value="candidates">candidates</option>
                                 <option value="companies">companies</option>
@@ -72,20 +79,43 @@
 
                 </div>
 
-                <div class="col-md-3 col-9 d-flex justify-content-end">
+                <div class="col-lg-3 col-9 d-flex justify-content-end">
 
 
 
                     <div class="links">
                         @guest
-                        <a href="#" class="btn login">
+                        <a href="{{route('login')}}" class="btn login">
                             login
                         </a>
-                        @endguest
+
                         <a href="#" class="btn post-job">
                             post job
                         </a>
+                        @endguest
 
+                        @auth
+
+
+
+                        <div class="btn-group btn-profile" role="group">
+                            <button type="button border-0" class="btn " data-bs-toggle="dropdown" aria-expanded="false">
+                                <img class="profile rounded-circle" src="{{asset('avatar.png')}}"
+                                    style="width:65px;height:65px" alt="">
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Dashboard</a></li>
+                                <li><a class="dropdown-item" href="#">setting</a></li>
+
+                                <li>
+                                    <form action="{{route('logout')}}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="dropdown-item" href="#">logout</button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                        @endauth
                     </div>
 
 
