@@ -15,12 +15,40 @@ header ul a{
     transition:.5s;
     height:100%;
 }
-header ul a.active,header ul a:hover{
+header ul.navbar-nav a.active,header ul.navbar-nav a:hover{
 
     color:var(--primary-color);
     border-top:2px solid var(--primary-color);
 }
+.header-with-image {
+    z-index:1;
+    color:var(--primary-color);
+    font-size:2rem;
+}
+.header-with-image img {
+    left: -8px;
+    bottom: 0;
+    z-index: -1;
+    width:100%;
+}
 
+.header-button a{
+    ine-height: 24px;
+    border-radius: 4px;
+    padding: 12px 24px 13px;
+    transition: .24s cubic-bezier(.55,.055,.675,.19);
+    overflow: hidden;
+    width: -moz-fit-content;
+    width: fit-content;
+    font-weight: 600;
+    color: var(--primary-color);
+
+}
+.header-button a:hover{
+background: 0 0;
+border-color: var(--primary-color);
+color: var(--primary-color);
+}
 
 .secondary-nav{
     background-color:var(--primary-color);
@@ -33,6 +61,11 @@ header ul a.active,header ul a:hover{
     width: 100%;
 }
 
+header .dropdown-menu li:hoverd , 
+.secondary-nav .dropdown-menu li:hover 
+{
+color:var(--primary-color);
+}
 .secondary-nav  .links{
     
 }
@@ -65,51 +98,95 @@ header ul a.active,header ul a:hover{
     color:#000;
     
 }
+.secondary-nav .btn-profile  button.show{
+    border-color:transparent;
+    border:none;
 
-.search-box{
-    width: 100% !important;
+}
+
+.search-box {
+    width: 100%;
     display: flex;
     align-items: center;
     background: #fff;
-    border-radius: 5px;
+    border-radius: 12px;
     border: 1px solid transparent;
-    padding: 12px !important;
-    border-radius:12px;
+    padding: 12px;
 }
 
-.search-box input{
-    border:none;
+.search-box input {
+    border: none;
 }
-.search-box input:focus-visible{
-outline:none;
+
+.search-box input:focus-visible {
+    outline: none;
 }
-.search-box .search-icon{
-    color:var(--primary-color);
+
+.search-box .search-icon {
+    color: var(--primary-color);
     align-self: center;
 }
 
-.search-box #searchType{
-    width:120px;
-}
-
-.search-box .search-btn{
-    background-color:var(--primary-color);
-    color:#fff;
-    border : 1px solid #fff;
-    max-width:120px;
+.search-box .search-btn {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: 1px solid #fff;
+    max-width: 120px;
     padding: 12px 24px 13px;
-    border-radius:12px;
+    border-radius: 12px;
     font-weight: 600;
-    transition:.5s;
+    transition: all 0.5s ease;
 }
+
+.search-box .search-btn:hover {
+    background-color: var(--primary-color);
+}
+
 section {
-    background-color:var(--section-color);
+    background-color: var(--section-color);
 }
 
-.banner-image {
-    animation: 5s ease-in-out infinite  banner-image ;
+/* Banner section - text styling */
+.banner-section h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #333;
 }
 
+.banner-section .fs-5 {
+    font-size: 1.25rem;
+    font-weight: 400;
+}
+
+/* Adjust responsive behavior for form */
+@media (max-width: 991px) {
+    .banner-section   .search-box {
+        flex-direction: column;
+    }
+
+    .search-box .search-btn {
+        width: 100%;
+        max-width: none;
+        margin-top: 12px;
+    }
+
+    .search-box input {
+        margin-bottom: 10px;
+    }
+}
+
+.banner-section   .search-box {
+    margin:90px 0 14px;
+}
+@media (max-width: 767px) {
+    .banner-section h1 {
+        font-size: 1.8rem;
+    }
+
+    .banner-section .fs-5 {
+        font-size: 1.1rem;
+    }
+}
 @keyframes banner-image {
     0%, 100% {
         transform: translateY(0);
@@ -125,6 +202,8 @@ section {
 
 .counter-section .counter-item{
     background-color:#fff;
+    max-width:360px;
+
 }
 
 .counter-section .counter-icon{
@@ -150,6 +229,104 @@ section {
 
 
 .why-us{
-    height:100vh;
+    /* min-height:100vh; */
+    padding-top:60px;
     background-color:rgb(241 242 244);
 } 
+
+
+
+.reused-card {
+    background-color: transparent;
+    border-radius: 12px;
+    transition: all 0.5s ease-in-out;
+}
+
+.reused-card .icon {
+    background-color: #fff;
+    color: var(--primary-color);
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease-in-out;
+}
+
+.reused-card .card-text {
+    color: var(--gray-color);
+    font-size: 1rem;
+}
+
+.reused-card:hover {
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.reused-card:hover .icon {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.reused-card .card-body {
+    padding: 5px 8px ;
+}
+
+.card-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.card-text {
+    font-size: 14px;
+    color: #777;
+
+}
+
+.category{
+    background-color:rgb(241 242 244 / 60%);
+    padding:44px 0;
+}
+
+.popular-category-item{
+    display: flex;
+    gap: 12px;
+    padding: 16px;
+    border-radius: 12px;
+    align-items: center;
+    transition: all .4s;
+    border: 1px solid #e4e5e8;
+    text-decoration:none;
+}
+.popular-category-item:hover{
+    background: #FFFFFF;
+    box-shadow: 0 12px 24px #002c6d1a;
+}
+.popular-category-item:hover h4  {
+   color:var(--primary-color);
+}
+.popular-category-icon {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all .4s;
+    font-size:28px;
+}
+.popular-category-data h4 {
+font-size: 16px;
+font-weight: 500;
+line-height: 24px;
+color: var(--gray-color);
+margin-bottom: 4px;
+transition: all .4s;
+}
+.popular-category-data p{
+    color: var(--gray-color);
+}

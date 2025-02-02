@@ -816,14 +816,167 @@
 
 </section>
 
-<section class="why-us ">
+<section class="why-us">
     <div class="container">
-        <div class="row">
+        <h2 class="text-center py-3">Why Choose Us</h2>
+        <div class="row mt-3">
+            <div class="col-md-4 col-sm-6 mb-4">
+                <div class="card reused-card border-0 py-3 px-2">
+                    <div class="card-body text-center ">
+                        <div class="icon mb-4">
+                            <i class="fa fa-users fa-3x"></i>
+                        </div>
+                        <h4 class="card-title ">User-Friendly Interface</h4>
+                        <p class="card-text">With our user-friendly platform, you can easily find the perfect job that
+                            matches your skills and experience.</p>
+                    </div>
+                </div>
+            </div>
 
+            <div class="col-md-4 col-sm-6 mb-4">
+                <div class="card reused-card border-0 py-3 px-2">
+                    <div class="card-body text-center ">
+                        <div class="icon mb-4">
+                            <i class="fa fa-briefcase fa-3x"></i>
+                        </div>
+                        <h4 class="card-title">Career Opportunities</h4>
+                        <p class="card-text">Our platform connects you to a wide range of job opportunities across
+                            various industries to help you build your career.</p>
+                    </div>
+                </div>
+            </div>
 
+            <div class="col-md-4 col-sm-6 mb-4">
+                <div class="card reused-card border-0 py-3 px-2">
+                    <div class="card-body text-center   ">
+                        <div class="icon mb-4">
+                            <i class="fa fa-cogs fa-3x"></i>
+                        </div>
+                        <h4 class="card-title">Advanced Tools</h4>
+                        <p class="card-text">We provide advanced search and filtering tools to help you find the job
+                            that best suits your needs and preferences.</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
+
+
+
+
+<section class="category">
+
+    <div class="container">
+        <div class="header-button d-flex justify-content-between">
+            <h2>Popular Category</h2>
+            <a href="" class="btn ">view all
+                <i class="fa fa-arrow-right"></i>
+            </a>
+
+        </div>
+
+        <div class="row mt-3">
+
+            @foreach ($categories as $category)
+            <div class="col-xl-3 col-lg-4 col-md-6 mt-2">
+                <a href="" class="popular-category-item">
+                    <div class="popular-category-icon">
+                        <i class="{{$category->icone ?? 'fas fa-desktop'}}"></i>
+                    </div>
+                    <div class="popular-category-data">
+                        <h4>{{$category->name}}</h4>
+                        <p>open position</p>
+                    </div>
+                </a>
+            </div>
+            @endforeach
+
+        </div>
+</section>
+
+{{--  --}}
+
+
+
+<section class="why-us">
+    <div class="container">
+        <h2 class="text-center py-3">
+            <span class="header-with-image position-relative">
+                wazaf
+                <img class="position-absolute" src="{{asset('title-shape.png')}}" alt="">
+            </span>Working Process
+        </h2>
+
+        <div class="row mt-3">
+            <div class="col-lg-3 col-sm-6 mb-4">
+                <div class="card reused-card border-0 py-3 px-2">
+                    <div class="card-body text-center ">
+                        <div class="icon mb-4">
+                            <i class="fa fa-users fa-3x"></i>
+                        </div>
+                        <h4 class="card-title "> Explore Opportunities</h4>
+                        <p class="card-text">Browse through a diverse range of job listings
+                            tailored to your interests
+                            and expertise</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-sm-6 mb-4">
+                <div class="card reused-card border-0 py-3 px-2">
+                    <div class="card-body text-center ">
+                        <div class="icon mb-4">
+                            <i class="fa fa-briefcase fa-3x"></i>
+                        </div>
+                        <h4 class="card-title"> Create Your Profile</h4>
+                        <p class="card-text">Build a standout profile highlighting your skills,
+                            experience, and
+                            qualifications</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-sm-6 mb-4">
+                <div class="card reused-card border-0 py-3 px-2">
+                    <div class="card-body text-center   ">
+                        <div class="icon mb-4">
+                            <i class="fa fa-cogs fa-3x"></i>
+                        </div>
+                        <h4 class="card-title"> Apply with Ease</h4>
+                        <p class="card-text">Effortlessly apply to jobs that match your
+                            preferences with just a few
+                            clicks</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-sm-6 mb-4">
+                <div class="card reused-card border-0 py-3 px-2">
+                    <div class="card-body text-center ">
+                        <div class="icon mb-4">
+                            <i class="fa fa-cogs fa-3x"></i>
+                        </div>
+                        <h4 class="card-title"> Track Your Progress</h4>
+                        <p class="card-text">Stay informed on your applications and manage your
+                            job-seeking journey
+                            effectively
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+</section>
+
+
+
+{{--  --}}
 @endsection
 
 @section("script")

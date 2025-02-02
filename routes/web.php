@@ -29,12 +29,10 @@ Route::middleware(['auth', 'is_employer'])->name('company.')->group(function () 
     Route::post('/update-job/{jobId}',[AccountController::class,'updateJob'])->name('company.updateJob');
     Route::post('/delete-job',[AccountController::class,'deleteJob'])->name('company.deleteJob');
 });
-// Route::middleware(['auth', 'is_candidate'])->name('candidate.')->group(function () {
-//     Route::get('/candidate/dashboard', function () {
-//         return view('candidate.dashboard');
-//     })->name('dashboard');
-// });
-Route::get('/candidate/dashboard', function () {
-    return view('user.candidate.dashboard');
-})->name('candidate.dashboard');
+Route::middleware(['auth', 'isCandidate'])->name('candidate.')->group(function () {
+    Route::get('/candidate/dashboard', function () {
+        return view('candidate.dashboard');
+    })->name('dashboard');
+});
+
 require __DIR__ . '/auth.php';
