@@ -111,9 +111,7 @@
         <div class="main-header">
             <div class="navbar">
                 <div class="container container-full-xxl">
-                    <a href="/" class="brand-logo"><img
-                            src=""
-                            alt="logo"></a>
+                    <a href="/" class="brand-logo"><img src="" alt="logo"></a>
                 </div><!-- /.container -->
             </div><!-- /.navbar -->
         </div><!-- /.main-header -->
@@ -124,15 +122,13 @@
                 <div class="row full-height align-items-center">
                     <div class="col-xl-5 col-lg-6 col-md-12">
                         <div class="auth-box2">
-                            <form action="" method="POST" class="rt-form"
-                                id="login_form">
-                                <input type="hidden" name="_token" value="K3OGSuJX017JfLzR0L1SetcWni1HQhbB6y5HQ0sP"
-                                    autocomplete="off">
+                            <form action="" method="POST" class="rt-form" id="login_form">
+                                @csrf
                                 <h4 class="rt-mb-20">Log In</h4>
                                 <span class="d-block body-font-3 text-gray-600 rt-mb-32">
                                     Don&#039;t have an account?
                                     <span>
-                                        <a href="https://jobpilot.templatecookie.com/register">Create Account
+                                        <a href="{{route('register')}}">Create Account
                                         </a>
                                     </span>
                                 </span>
@@ -162,8 +158,7 @@
                                     </div>
                                     <div class="flex-grow-0">
                                         <span class="body-font-4">
-                                            <a href="https://jobpilot.templatecookie.com/password/reset"
-                                                class="text-primary-500">
+                                            <a href="reset" class="text-primary-500">
                                                 Forget Password
                                             </a>
                                         </span>
@@ -211,7 +206,7 @@
                                             </span>
                                         </button>
                                     </div>
-                                    <a href="https://jobpilot.templatecookie.com/admin/login"
+                                    <a href="#"
                                         class="tw-mt-4 btn btn-outline-primary d-block tw-border tw-border-[#0A65CC]">Admin
                                         Login</a>
                                 </div>
@@ -895,11 +890,11 @@
 
         function loginCredentials(type) {
             if (type == 'candidate') {
-                $('#email').val('candidate@mail.com')
-                $('#password').val('password')
+                $('#email').val('candidate@example.com')
+                $('#password').val('1234')
             } else {
-                $('#email').val('company@mail.com')
-                $('#password').val('password')
+                $('#email').val('employer@example.com')
+                $('#password').val('1234')
             }
 
             $('#login_form').submit();

@@ -11,14 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('app_settings', function (Blueprint $table) {
+        Schema::create('job_skills', function (Blueprint $table) {
             $table->id();
-            $table->string('app_name')->default('Wazaf');
-            $table->string('app_email')->default('wazaf@example.com');
-            $table->string('logo')->nullable();
-            $table->string('favicon')->nullable();
-            $table->string('theme_color')->default('#000000');
-
+            $table->foreignId('job_position_id')->constrained('job_positions')->onDelete('cascade');
+            $table->foreignId('skill_id')->constrained('skills')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -28,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('app_settings');
+        Schema::dropIfExists('job_skills');
     }
 };

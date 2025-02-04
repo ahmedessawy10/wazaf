@@ -18,25 +18,18 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
+
+
+        $this->call([
+            CategorySeeder::class,
+            IndustrySeeder::class,
+            UserSeeder::class,
+            OrganizationTypeSeeder::class,
+            ExperienceLevelSeeder::class,
+            EducationLevelSeeder::class,
+            SkillSeeder::class,
+        ]);
         Employer::factory(10)->create();
         Candidate::factory(20)->create();
-
-        $this->call([
-            CategorySeeder::class,
-            IndustrySeeder::class,
-            OrganizationTypeSeeder::class,
-            ExperienceLevelSeeder::class,
-            EducationLevelSeeder::class,
-            SkillSeeder::class,
-        ]);
-
-        $this->call([
-            CategorySeeder::class,
-            IndustrySeeder::class,
-            OrganizationTypeSeeder::class,
-            ExperienceLevelSeeder::class,
-            EducationLevelSeeder::class,
-            SkillSeeder::class,
-        ]);
     }
 }
