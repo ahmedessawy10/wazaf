@@ -7,6 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
+<<<<<<< HEAD
 
     
 </head>
@@ -83,6 +84,16 @@
 </script>
 
 @yield('customJs')
+=======
+ 
+</head>
+<body>
+
+
+</body>
+</html>
+        
+>>>>>>> 4c1c557 (Add initial project structure with configuration, models, controllers, and views)
 </body>
 
 </html>

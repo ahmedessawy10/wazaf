@@ -2,27 +2,20 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\JobPositionController;
+use App\Http\Controllers\EmployerController;
+use App\Http\Controllers\JobController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 
 Route::get('/', HomeController::class)->name('home');
+
+// Route::post('auth/register', [AuthController::class, 'register'])->name('auth.register');
+// Route::post('auth/login', [AuthController::class, 'login'])->name('auth.login');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::prefix('jobs')->name('jobs.')->group(function () {
-    Route::get('/', [JobPositionController::class, 'index'])->name('index');
-    Route::get('/{jobPosition}', [JobPositionController::class, 'show'])->name('show');
-
-    Route::middleware(['auth', 'isEmployer'])->group(function () {
-        Route::get('/create', [JobPositionController::class, 'create'])->name('create');
-        Route::post('/', [JobPositionController::class, 'store'])->name('store');
-        Route::get('/{jobPosition}/edit', [JobPositionController::class, 'edit'])->name('edit');
-        Route::put('/{jobPosition}', [JobPositionController::class, 'update'])->name('update');
-        Route::delete('/{jobPosition}', [JobPositionController::class, 'destroy'])->name('destroy');
-    });
-});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -31,23 +24,61 @@ Route::middleware('auth')->group(function () {
 });
 
 
-Route::middleware(['auth', 'is_employer'])->name('company.')->group(function () {
-    Route::get('/comProfile',[AccountController::class,'profile'])->name('company.companyProfile');
-    Route::put('/update-profile',[AccountController::class,'updateProfile'])->name('company.updateProfile');
-    Route::get('/logout',[AccountController::class,'logout'])->name('company.logout');
-    Route::post('/update-profile-img',[AccountController::class,'updateProfileImg'])->name('company.updateProfileImg');
-    Route::get('/create-job',[AccountController::class,'createJob'])->name('company.createJob');
-    Route::post('/save-job',[AccountController::class,'saveJob'])->name('company.saveJob');
-    Route::get('/my-jobs',[AccountController::class,'myJobs'])->name('company.myJobs');
-    Route::get('/edit-job/edit/{jobId}',[AccountController::class,'editJob'])->name('company.editJob');
-    Route::post('/update-job/{jobId}',[AccountController::class,'updateJob'])->name('company.updateJob');
-    Route::post('/delete-job',[AccountController::class,'deleteJob'])->name('company.deleteJob');
-});
+Route::middleware(['auth', 'isEmployer'])->name('employer.')->group(function () {
+    Route::get('/employer/dashboard', function () {
+       return view('user.employer.dashboard');
+    })->name('dashboard');
+    Route::post('/employer/settings', [EmployerController::class, 'store'])->name('settings');
+    Route::get('/employer/settings', [EmployerController::class, 'getEmployer'])->name('settings');
 
+
+
+    Route::resource('employer/jobs', JobController::class)->only([
+        'index', 'create', 'store','show','edit','update','destroy'
+    ]);
+
+
+    //  rout for jobcontroller index
+
+
+
+    // Route::get('/employer/jobs', [JobController::class, 'index'])->name('job.index');
+    // Route::post('/employer/jobs', [JobController::class, 'store'])->name('job.store');
+    // Route::get('/employer/', [EmployerController::class, 'create'])->name('job.create');
+
+
+
+
+    // Route::get('/employer/overview' , [JobController::class , 'getRecentJobs'])->name('employer.overview');
+    // Route::resource('employer/jobs', JobController::class)->names([
+    //     'store' => 'jobs.store',
+    //     'index' => 'employer.jobs.index',
+    //     'create' => 'employer.jobs.create',
+    //     'show' => 'employer.jobs.show',
+    //     'edit' => 'employer.jobs.edit',
+    //     'update' => 'employer.jobs.update',
+    //     'destroy' => 'employer.jobs.destroy',
+    // ]);
+
+
+
+
+
+
+    Route::get('/employer/my-profile', function () {
+        return view('employer.my-profile');
+    })->name('profile');
+    Route::get('/employer/saved-candidates', function () {
+        return view('employer.saved-candidates');
+    })->name('saved-candidates');
+    Route::get('/employer/custom-questions', function () {
+        return view('employer.custom-questions');
+    })->name('custom-questions');
+
+});
 Route::middleware(['auth', 'isCandidate'])->name('candidate.')->group(function () {
     Route::get('/candidate/dashboard', function () {
-        return view('user.candidate.dashboard');
+        return view('candidate.dashboard');
     })->name('dashboard');
 });
-
 require __DIR__ . '/auth.php';

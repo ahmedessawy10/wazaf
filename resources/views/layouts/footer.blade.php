@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {{-- Footer --}}
 <footer class="bg-dark text-light py-5">
     <div class="container">
@@ -47,4 +48,12 @@
             <p class="mb-0">&copy; {{ date('Y') }} Your Job Portal. All rights reserved.</p>
         </div>
     </div>
+=======
+<footer>
+
+
+
+
+
+>>>>>>> 4c1c557 (Add initial project structure with configuration, models, controllers, and views)
 </footer>
