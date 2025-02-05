@@ -36,6 +36,10 @@ Route::middleware(['auth', 'isEmployer'])->name('employer.')->group(function () 
     Route::resource('employer/jobs', JobController::class)->only([
         'index', 'create', 'store','show','edit','update','destroy'
     ]);
+   
+
+
+    
 
 
     //  rout for jobcontroller index
