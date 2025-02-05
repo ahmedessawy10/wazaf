@@ -13,7 +13,7 @@ class JobPositionController extends Controller
     /**
      * Display a listing of the resource.
      */
-<<<<<<< HEAD
+
     public function index(Request $request)
     {
         $query = JobPosition::with('employer');
@@ -45,11 +45,6 @@ class JobPositionController extends Controller
 
 
         return view('findJob', compact('jobs', 'categories'));
-=======
-    public function index()
-    {
-        //
->>>>>>> 4c1c557 (Add initial project structure with configuration, models, controllers, and views)
     }
 
     /**
@@ -71,7 +66,7 @@ class JobPositionController extends Controller
     /**
      * Display the specified resource.
      */
-<<<<<<< HEAD
+
     public function show($id)
     {
 
@@ -81,11 +76,6 @@ class JobPositionController extends Controller
         }
 
         return view('jobDetails', compact('job'));
-=======
-    public function show(JobPosition $jobPosition)
-    {
-        //
->>>>>>> 4c1c557 (Add initial project structure with configuration, models, controllers, and views)
     }
 
     /**

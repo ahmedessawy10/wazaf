@@ -3,8 +3,11 @@
 namespace App\Models;
 
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Tag;
+use App\Models\EducationLevel;
+use App\Models\ExperienceLevel;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 
 class JobPosition extends Model
