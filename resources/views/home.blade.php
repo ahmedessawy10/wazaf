@@ -973,6 +973,108 @@
 
 
 </section>
+{{-- Jobs Section --}}
+<section class="jobs-section py-5">
+    <div class="container">
+        <div class="section-header text-center mb-5">
+            <h2 class="fw-bold mb-3">Featured Jobs</h2>
+            <p class="text-secondary">Find your dream job from thousands of featured jobs</p>
+        </div>
+        <div class="row g-4">
+            @forelse($jobs as $job)
+            <div class="col-lg-6">
+                <div class="job-card bg-white p-4 rounded-3 shadow-sm">
+                    <div class="d-flex justify-content-between">
+                        <div class="d-flex gap-3">
+                            <div class="company-logo">
+                                <img src="{{$job->employer->logo ? asset($job->employer->logo) : asset("defualtCompanyLogo.png")}}"
+                                    alt="company logo" class="rounded-3" width="60" height="60">
+                            </div>
+                            <div>
+                                <h5 class="mb-1">{{ $job->title }}</h5>
+                                <p class="text-secondary mb-2">{{ $job->employer->company_name }}</p>
+                                <div class="d-flex gap-2 flex-wrap">
+                                    <span class="badge bg-light text-dark">{{ $job->job_type }}</span>
+                                    <span class="badge bg-light text-dark">{{ $job->address }}</span>
+                                    <span class="badge bg-light text-dark">${{ number_format($job->salary) }}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="{{route('jobs.show',$job->id)}}" class="btn btn-outline-primary">Apply Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @empty
+            <div class="col-12 text-center">
+                <p>No jobs available at the moment.</p>
+            </div>
+            @endforelse
+        </div>
+    </div>
+</section>
+
+{{-- Companies Section --}}
+<section class="companies-section py-5 bg-white">
+    <div class="container">
+        <div class="section-header text-center mb-5">
+            <h2 class="fw-bold mb-3">Top Companies</h2>
+            <p class="text-secondary">Discover opportunities with leading companies</p>
+        </div>
+        <div class="row g-4">
+            @forelse($employers as $employer)
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="company-card text-center p-4 rounded-3 border">
+                    <img src="{{$job->employer->logo ? asset($job->employer->logo) : asset("defualtCompanyLogo.png")}}"
+                        alt="
+                        company logo" class="mb-3" width="80" height="80">
+                    <h5 class="mb-2">{{ $employer->company_name }}</h5>
+                    <p class="text-secondary mb-3">{{ $employer->industry }}</p>
+                    <a href="" class="btn btn-outline-primary btn-sm">View Jobs</a>
+                </div>
+            </div>
+            @empty
+            <div class="col-12 text-center">
+                <p>No companies available at the moment.</p>
+            </div>
+            @endforelse
+        </div>
+    </div>
+</section>
+
+{{-- Candidates Section --}}
+<section class="candidates-section py-5">
+    <div class="container">
+        <div class="section-header text-center mb-5">
+            <h2 class="fw-bold mb-3">Featured Candidates</h2>
+            <p class="text-secondary">Connect with talented professionals</p>
+        </div>
+        <div class="row g-4">
+            @forelse($candidates as $candidate)
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="candidate-card bg-white p-4 rounded-3 text-center border">
+                    <img src="{{ $candidate->photo? asset($candidate->photo):asset("avatar.png") }}"
+                        alt="candidate photo" class="rounded-circle mb-3" width="100" height="100">
+                    <h5 class="mb-2">{{ $candidate->user->name }}</h5>
+                    <p class="text-secondary mb-2">{{ $candidate->job_title }}</p>
+                    <div class="d-flex justify-content-center gap-2 mb-3">
+                        @foreach(explode(',', $candidate->skills) as $skill)
+                        <span class="badge bg-light text-dark">{{ trim($skill) }}</span>
+                        @endforeach
+                    </div>
+                    <a href="" class="btn btn-outline-primary btn-sm">View Profile</a>
+                </div>
+            </div>
+            @empty
+            <div class="col-12 text-center">
+                <p>No candidates available at the moment.</p>
+            </div>
+            @endforelse
+        </div>
+    </div>
+</section>
+
 
 
 
