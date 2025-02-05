@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\JobPosition;
 use App\Models\Category;
+use App\Models\JobPosition;
 use Illuminate\Http\Request;
+use App\Models\JobApplication;
+use Illuminate\Support\Facades\Auth;
 
 class JobPositionController extends Controller
 {
@@ -96,5 +98,19 @@ class JobPositionController extends Controller
     public function destroy(JobPosition $jobPosition)
     {
         //
+    }
+
+    public function applyForJob($id)
+    {
+
+        $job =  JobPosition::findorfail($id);
+
+        JobApplication::create([
+            "job_position_id" => $job->id,
+            'candidate_id' => Auth::user()->candidate->id
+
+        ]);
+
+        return redirect()->back()->with('succeess', 'job apply successfully');
     }
 }

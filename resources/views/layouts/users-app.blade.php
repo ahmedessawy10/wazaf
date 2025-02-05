@@ -18,6 +18,9 @@
 <body>
     @include('layouts.navbar')
 
+    <!-- Replace the search form with the original version -->
+
+
     @yield('centent')
 
 

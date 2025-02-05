@@ -20,10 +20,12 @@
                         href="{{route('jobs.index')}}">Find Job</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " aria-current="page" href="#">Candidates</a>
+                    <a class="nav-link  {{request()->routeIs('candidates.index') ? 'active' : ''}} " aria-current="page"
+                        href="{{route('candidates.index')}}">Candidates</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " aria-current="page" href="#">Companies</a>
+                    <a class="nav-link {{request()->routeIs('employers.index') ? 'active' : ''}}  " aria-current="page"
+                        href="{{route('employers.index')}}">Companies</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link " aria-current="page" href="#">About Us</a>
@@ -106,8 +108,14 @@
                                     style="width:65px;height:65px" alt="">
                             </button>
                             <ul class="dropdown-menu">
+
+                            @if(auth()->user()->role == 'candidate')
+                                <li><a class="dropdown-item" href="{{route('candidate.dashboard')}}">Dashboard</a></li>
+                                <li><a class="dropdown-item" href="{{route('candidate.settings')}}">setting</a></li>
+                            @elseif(auth()->user()->role == 'employer')
                                 <li><a class="dropdown-item" href="#">Dashboard</a></li>
                                 <li><a class="dropdown-item" href="#">setting</a></li>
+                            @endif
 
                                 <li>
                                     <form action="{{route('logout')}}" method="POST">

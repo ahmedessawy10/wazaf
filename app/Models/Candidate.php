@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use App\Models\JobPosition;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Candidate extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'job_title',
         'user_id',
@@ -16,24 +18,43 @@ class Candidate extends Model
         'military_status',
         'gender',
         'date_of_birth',
-        'avilability',
+        'availability',
         'phone',
         'country',
         'city',
         'address',
         'resume',
         'cover_letter',
-        'exp_id',
-        'edu_id',
     ];
 
-    function user()
+    protected $casts = [
+        'date_of_birth' => 'date',
+    ];
+
+    public function user()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class);
     }
 
-    function skills()
+    public function experiences()
     {
-        return $this->belongsToMany(Skill::class, "candidate_skills", 'skill_id', 'candidate_id');
+        return $this->hasMany(Experience::class);
+    }
+
+    public function education()
+    {
+        return $this->hasMany(Education::class);
+    }
+
+    public function skills()
+    {
+        return $this->belongsToMany(Skill::class, 'candidate_skills');
+    }
+
+    public function appliedJobs()
+    {
+        return $this->belongsToMany(JobPosition::class, 'job_applications')
+            ->withPivot('status', 'cover_letter')
+            ->withTimestamps();
     }
 }

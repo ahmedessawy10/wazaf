@@ -178,6 +178,7 @@
 </style>
 @endsection
 @section("centent")
+<x-candidate-slider></x-candidate-slider>
 
 <div id="settings" class="content-section">
     <h2 class="mb-4">Settings</h2>
@@ -198,7 +199,9 @@
         <div class="tab-content">
 
             <div class="tab-pane fade show active" id="basic-info">
-                <form>
+                <form action="{{ route('candidate.settings.basic-info') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    @method('PATCH')
                     <div class="mb-3">
                         <label for="profilePicture" class="form-label">Profile Picture</label>
                         <input type="file" class="form-control" id="profilePicture" accept="image/*">

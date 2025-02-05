@@ -225,35 +225,7 @@
             </div>
 
             <!-- Applied Jobs Section -->
-            <div id="applied-jobs" class="content-section">
-                <h2 class="mb-4">Applied Jobs</h2>
-                <table class="table table-hover shadow-sm">
-                    <thead>
-                        <tr>
-                            <th>Job</th>
-                            <th>Date Applied</th>
-                            <th>Status</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Java Points (Contractual)</td>
-                            <td>Jan 31, 2025 14:01</td>
-                            <td><span class="text-success">✓ Active</span></td>
-                            <td><a href="#" class="text-primary text-decoration-none btn-hover">View Details</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Zamblis (300 - 500 USD)</td>
-                            <td>Jan 31, 2025 14:01</td>
-                            <td><span class="text-success">✓ Active</span></td>
-                            <td><a href="#" class="text-primary text-decoration-none btn-hover">View Details</a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+          
 
             <!-- Favorite Jobs Section -->
             <div id="favorite-jobs" class="content-section">

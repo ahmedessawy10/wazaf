@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Models\Category;
@@ -22,27 +23,29 @@ use Illuminate\Support\Str;
 class AccountController extends Controller
 {
 
-    public function comProfile(){
+    public function comProfile()
+    {
 
         $id = Auth::user()->id;
-        $user = User::where('id',$id)->first();
+        $user = User::where('id', $id)->first();
 
-        return view('company.companyProfile',[
+        return view('company.companyProfile', [
             'user' => $user,
         ]);
     }
 
     // update profile function
-    public function updateProfile(Request $request){
+    public function updateProfile(Request $request)
+    {
 
         $id = Auth::user()->id;
 
-        $validator = Validator::make($request->all(),[
+        $validator = Validator::make($request->all(), [
             'name' => 'required|min:5|max:20',
-            'email' => 'required|email|unique:users,email,'.$id.',id'
+            'email' => 'required|email|unique:users,email,' . $id . ',id'
         ]);
 
-        if($validator->passes()){
+        if ($validator->passes()) {
 
             $user = User::find($id);
             $user->name = $request->name;
@@ -51,14 +54,13 @@ class AccountController extends Controller
             $user->designation = $request->designation;
             $user->save();
 
-            Session()->flash('success','Profile updated successfully');
+            Session()->flash('success', 'Profile updated successfully');
 
             return response()->json([
                 'status' => true,
                 'errors' => [],
             ]);
-
-        }else{
+        } else {
             return response()->json([
                 'status' => false,
                 'errors' => $validator->errors(),
@@ -67,48 +69,48 @@ class AccountController extends Controller
     }
 
     // /upload/change image from profile
-    public function updateProfileImg(Request $request){
+    public function updateProfileImg(Request $request)
+    {
         // dd($request->all());
         $id = Auth::user()->id;
 
-        $validator = Validator::make($request->all(),[
+        $validator = Validator::make($request->all(), [
             'image' => 'required|image|max:2048' // Adjust max size as needed
         ]);
-        if($validator->passes()){
+        if ($validator->passes()) {
 
             $image = $request->image;
             $ext = $image->getClientOriginalExtension();
-            $imageName = $id.'-'.time().'.'.$ext;
+            $imageName = $id . '-' . time() . '.' . $ext;
             $image->move(public_path('/profile_img/'), $imageName);
 
             // $sourcePath = public_path('/profile_img/'. $imageName);
             // $manager = new ImageManager(Driver::class);
             // $image = $manager->read($sourcePath);
 
-             // crop the best fitting 5:3 (150x150) ratio and resize to 150x150 pixel
+            // crop the best fitting 5:3 (150x150) ratio and resize to 150x150 pixel
             // $image->cover(150, 150);
             // $image->toPng()->save(public_path('/profile_img/thumb/'. $imageName));
 
             // This code will create a small thumbnail
-            $sourcePath = public_path().'/profile_img/'.$imageName;
-            $destPath = public_path().'/profile_img/thumb/'.$imageName;
+            $sourcePath = public_path() . '/profile_img/' . $imageName;
+            $destPath = public_path() . '/profile_img/thumb/' . $imageName;
             $image = Image::make($sourcePath);
-            $image->fit(300,275);
+            $image->fit(300, 275);
             $image->save($destPath);
 
             // delete old profile image, when user update his/her new image
-            File::delete(public_path('/profile_img/'. Auth::user()->image));
-            File::delete(public_path('/profile_img/thumb/'. Auth::user()->image));
+            File::delete(public_path('/profile_img/' . Auth::user()->image));
+            File::delete(public_path('/profile_img/thumb/' . Auth::user()->image));
 
-            User::where('id',$id)->update(['image' => $imageName]);
+            User::where('id', $id)->update(['image' => $imageName]);
 
-            Session()->flash('success','Profile image updated successfully.');
+            Session()->flash('success', 'Profile image updated successfully.');
             return response()->json([
                 'status' => true,
                 'errors' => [],
             ]);
-
-        }else{
+        } else {
             return response()->json([
                 'status' => false,
                 'errors' => $validator->errors(),
@@ -116,22 +118,25 @@ class AccountController extends Controller
         }
     }
 
-    public function logout(){
+    public function logout()
+    {
         Auth::logout();
         return redirect()->route('account.login');
     }
 
 
-    public function createJob(){
-        $categories = Category::orderBy('name','ASC')->where('status',1)->get();
-        $job_types = JobType::orderBy('name','ASC')->where('status',1)->get();
-        return view('front.account.job.create',[
+    public function createJob()
+    {
+        $categories = Category::orderBy('name', 'ASC')->where('status', 1)->get();
+        $job_types = JobType::orderBy('name', 'ASC')->where('status', 1)->get();
+        return view('front.account.job.create', [
             'categories' => $categories,
             'job_types' => $job_types,
         ]);
     }
 
-    public function saveJob(Request $request){
+    public function saveJob(Request $request)
+    {
 
         $rules = [
             'title' => 'required|min:5|max:200',
@@ -145,8 +150,8 @@ class AccountController extends Controller
             'company_name' => 'required|min:3|max:75',
         ];
 
-        $validator = Validator::make($request->all(),$rules);
-        if($validator->passes()){
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->passes()) {
 
             $job = new Job();
             $job->title = $request->title;
@@ -167,12 +172,12 @@ class AccountController extends Controller
             $job->company_website = $request->company_website;
             $job->save();
 
-            Session()->flash('success','Job added successfully.');
+            Session()->flash('success', 'Job added successfully.');
             return response()->json([
                 'status' => true,
                 'errors' => [],
             ]);
-        }else{
+        } else {
             return response()->json([
                 'status' => false,
                 'errors' => $validator->errors(),
@@ -180,20 +185,22 @@ class AccountController extends Controller
         }
     }
 
-    public function myJobs(){
+    public function myJobs()
+    {
 
         //metioned the code of the paginator in AppServiceProvider Class otherwise your paginator will not work perfectly
 
-        $jobs = Job::where('user_id',Auth::user()->id)->with('jobType')->orderBy('created_at','DESC')->paginate(10);
-        return view('front.account.job.my-jobs',[
+        $jobs = Job::where('user_id', Auth::user()->id)->with('jobType')->orderBy('created_at', 'DESC')->paginate(10);
+        return view('front.account.job.my-jobs', [
             'jobs' => $jobs,
         ]);
     }
 
     // edit Job page
-    public function editJob($id){
-        $categories = Category::orderBy('name','ASC')->where('status',1)->get();
-        $jobTypes = JobType::orderBy('name','ASC')->where('status',1)->get();
+    public function editJob($id)
+    {
+        $categories = Category::orderBy('name', 'ASC')->where('status', 1)->get();
+        $jobTypes = JobType::orderBy('name', 'ASC')->where('status', 1)->get();
 
         // If user write another user id through url show him 404 page
         $job = Job::where([
@@ -201,11 +208,11 @@ class AccountController extends Controller
             'id' => $id,
         ])->first();
 
-        if($job == null){
+        if ($job == null) {
             abort(404);
         }
 
-        return view('front.account.job.edit',[
+        return view('front.account.job.edit', [
             'categories' => $categories,
             'job_types' => $jobTypes,
             'job' => $job,
@@ -213,7 +220,8 @@ class AccountController extends Controller
     }
 
     // Update Job
-    public function updateJob($jobId, Request $request){
+    public function updateJob($jobId, Request $request)
+    {
 
         $rules = [
             'title' => 'required|min:5|max:200',
@@ -226,10 +234,10 @@ class AccountController extends Controller
             'company_name' => 'required|min:3|max:75',
         ];
 
-        $validator = Validator::make($request->all(),$rules);
-        if($validator->passes()){
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->passes()) {
 
-            $job =Job::find($jobId);
+            $job = Job::find($jobId);
             $job->title = $request->title;
             $job->category_id = $request->category;
             $job->job_type_id = $request->jobType;
@@ -248,13 +256,12 @@ class AccountController extends Controller
             $job->company_website = $request->company_website;
             $job->save();
 
-            Session()->flash('success','Job updated successfully.');
+            Session()->flash('success', 'Job updated successfully.');
             return response()->json([
                 'status' => true,
                 'errors' => [],
             ]);
-
-        }else{
+        } else {
             return response()->json([
                 'status' => false,
                 'errors' => $validator->errors(),
@@ -264,30 +271,25 @@ class AccountController extends Controller
 
 
     // This method will delete job
-    public function deleteJob(Request $request){
+    public function deleteJob(Request $request)
+    {
 
         $job = Job::where([
             'user_id' => Auth::user()->id,
             'id' => $request->jobId,
         ])->first();
 
-        if($job == null){
-            Session()->flash('error','Either Job deleted or not found.');
+        if ($job == null) {
+            Session()->flash('error', 'Either Job deleted or not found.');
             return response()->json([
                 'status' => true,
             ]);
         }
 
-        Job::where('id',$request->jobId)->delete();
-        Session()->flash('success','Job deleted successfully.');
+        Job::where('id', $request->jobId)->delete();
+        Session()->flash('success', 'Job deleted successfully.');
         return response()->json([
             'status' => true,
         ]);
-
     }
-
-    
-
-
- }
-
+}
