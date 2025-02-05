@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('banner_image')->nullable();
             $table->string('latitude')->nullable();
             $table->string('longitude')->nullable();
+            $table->string('city')->nullable();
             $table->string('address')->nullable();
             $table->string('phone')->nullable();
             $table->foreignId('industry_type')->nullable()->constrained("industries");
