@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="    Jobpilot is job portal laravel script designed to create, manage and publish jobs posts. Companies can create their profile and publish jobs posts. Candidate can apply job posts.
+    <meta name="description" content="   wazaf is job portal laravel script designed to create, manage and publish jobs posts. Companies can create their profile and publish jobs posts. Candidate can apply job posts.
 ">
-    <meta property="og:image" content="https://jobpilot.templatecookie.com/frontend/assets/images/jobpilot.png
-">
+    {{-- <meta property="og:image" content="https://jobpilot.templatecookie.com/frontend/assets/images/jobpilot.png
+"> --}}
 
     <title> Login
-        - Jobpilot</title>
+    </title>
     <style>
         /* The Modal (background) */
         .modal {
@@ -78,17 +78,18 @@
     </style>
 
 
-    <script src="https://jobpilot.templatecookie.com/frontend/assets/js/jquery-3.6.0.min.js"></script>
-    <link rel="icon" type="image/png" href="https://jobpilot.templatecookie.com/frontend/assets/images/logo/fav.png">
+    {{-- <script src="https://jobpilot.templatecookie.com/frontend/assets/js/jquery-3.6.0.min.js"></script> --}}
+    {{-- <link rel="icon" type="image/png" href="https://jobpilot.templatecookie.com/frontend/assets/images/logo/fav.png"> --}}
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="preload"
         as="style">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="preload" as="style" href="https://jobpilot.templatecookie.com/build/assets/app.2a1af9ee.css" />
-    <link rel="preload" as="style" href="https://jobpilot.templatecookie.com/build/assets/app.76229581.css" />
-    <link rel="stylesheet" href="https://jobpilot.templatecookie.com/build/assets/app.2a1af9ee.css" />
-    <link rel="stylesheet" href="https://jobpilot.templatecookie.com/build/assets/app.76229581.css" />
+    {{-- <link rel="preload" as="style" href="https://jobpilot.templatecookie.com/build/assets/app.2a1af9ee.css" /> --}}
+    {{-- <link rel="preload" as="style" href="https://jobpilot.templatecookie.com/build/assets/app.76229581.css" /> --}}
+    {{-- <link rel="stylesheet" href="https://jobpilot.templatecookie.com/build/assets/app.2a1af9ee.css" /> --}}
+    <link rel="stylesheet" href="{{asset('vendor/login.css')}}" />
+
 
 
     <!-- PWA Meta Theme color and link Start  -->
@@ -122,7 +123,7 @@
                 <div class="row full-height align-items-center">
                     <div class="col-xl-5 col-lg-6 col-md-12">
                         <div class="auth-box2">
-                            <form action="" method="POST" class="rt-form" id="login_form">
+                            <form action="{{route('login')}}" method="POST" class="rt-form" id="login_form">
                                 @csrf
                                 <h4 class="rt-mb-20">Log In</h4>
                                 <span class="d-block body-font-3 text-gray-600 rt-mb-32">
@@ -402,12 +403,12 @@
 
     <!-- PWA Button Start -->
     <button class="pwa-install-btn bg-white position-fixed d-none" id="installApp">
-        <img src="https://jobpilot.templatecookie.com/pwa-btn.png" alt="Install App">
+        <img src="" alt="Install App">
     </button>
     <!-- PWA Button End -->
 
     <!-- scripts -->
-    <script src="https://jobpilot.templatecookie.com/frontend/assets/js/bootstrap.bundle.js"></script>
+    {{-- <script src="https://jobpilot.templatecookie.com/frontend/assets/js/bootstrap.bundle.js"></script>
     <script src="https://jobpilot.templatecookie.com/frontend/assets/js/jquery.counterup.min.js"></script>
     <script src="https://jobpilot.templatecookie.com/frontend/assets/js/jquery.scrollUp.min.js"></script>
     <script src="https://jobpilot.templatecookie.com/frontend/assets/js/OverlayScrollbars.js"></script>
@@ -422,395 +423,24 @@
     <script src="https://jobpilot.templatecookie.com/frontend/assets/js/bootstrap-datepicker.min.js"></script>
     <script src="https://jobpilot.templatecookie.com/frontend/assets/js/sortable.min.js"></script>
     <script src="https://jobpilot.templatecookie.com/frontend/assets/js/ckeditor.min.js"></script>
-    <script src="https://jobpilot.templatecookie.com/frontend/assets/js/axios.min.js"></script>
-    <script src="https://jobpilot.templatecookie.com/frontend/assets/js/app.js"></script>
-    <link rel="preload" as="style" href="https://jobpilot.templatecookie.com/build/assets/app.21aed338.css" />
+    <script src="https://jobpilot.templatecookie.com/frontend/assets/js/axios.min.js"></script> --}}
+    {{-- <script src="https://jobpilot.templatecookie.com/frontend/assets/js/app.js"></script> --}}
+    {{-- <link rel="preload" as="style" href="https://jobpilot.templatecookie.com/build/assets/app.21aed338.css" />
     <link rel="preload" as="style" href="https://jobpilot.templatecookie.com/build/assets/app.76229581.css" />
     <link rel="modulepreload" href="https://jobpilot.templatecookie.com/build/assets/app.a380e14a.js" />
     <link rel="stylesheet" href="https://jobpilot.templatecookie.com/build/assets/app.21aed338.css" />
     <link rel="stylesheet" href="https://jobpilot.templatecookie.com/build/assets/app.76229581.css" />
-    <script type="module" src="https://jobpilot.templatecookie.com/build/assets/app.a380e14a.js"></script>
-    <script>
-        var auth_check = $('#auth_user').val();
-
-    if (auth_check == 1) {
-        loadUnreadMessageCount();
-
-        function playAudio() {
-            const audio = new Audio("/frontend/assets/sound.mp3");
-            audio.play();
-        }
-
-        function loadUnreadMessageCount() {
-            $.ajax({
-                url: "https://jobpilot.templatecookie.com/load-unread-count",
-                type: "GET",
-                success: function(response) {
-                    if (response > 0) {
-                        $('.unread-message-part').removeClass('d-none');
-                    } else {
-                        $('.unread-message-part').addClass('d-none');
-                    }
-                }
-            });
-        }
-    }
-
-    // autocomplete
-    var path = "https://jobpilot.templatecookie.com/job/autocomplete";
-
-    $('.global_header_search').keyup(function(e) {
-        var keyword = $(this).val();
-
-        if (keyword != '') {
-            $.ajax({
-                url: path,
-                type: 'GET',
-                dataType: "json",
-                data: {
-                    search: keyword
-                },
-                success: function(data) {
-                    $('#autocomplete_job_results').fadeIn();
-                    $('#autocomplete_job_results').html(data);
-                }
-            });
-        } else {
-            $('#autocomplete_job_results').fadeOut();
-        }
-    });
-
-    $('#global_search').keypress(function(e) {
-        var key = e.which;
-
-        if (key == 13) {
-            $('#search-form').submit();
-        }
-    });
-
-    $("#searchIcon").click(function() {
-        $(".togglesearch").toggle();
-        $("#search_input").focus();
-    });
-
-    $("#mblSearchIcon").click(function() {
-
-        $(".mblTogglesearch").toggle();
-        $('#mobile_search_input').focus();
-    });
-
-
-    $('button.effect1').on('click', function() {
-        $(this).find('span').toggleClass('active');
-    });
-
-    $('.rt-mobile-menu-overlay').on('click', function() {
-        $('button.effect1').find('span').removeClass('active');
-    });
-
-    //image upload scripts
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function(e) {
-                if (input.className === 'profile-file-upload-input') {
-                    $('.profile-image-upload-wrap').hide();
-                    $('.profile-file-upload-image').attr('src', e.target.result);
-                    $('.profile-file-upload-content').show();
-
-                    // $('.image-title').html(input.files[0].name);
-                }
-                if (input.className === 'banner-file-upload-input') {
-                    $('.banner-image-upload-wrap').hide();
-
-                    $('.banner-file-upload-image').attr('src', e.target.result);
-                    $('.banner-file-upload-content').show();
-
-                    // $('.image-title').html(input.files[0].name);
-                }
-                if (input.className === 'resume-file-upload-input') {
-                    $('.cv-image-upload-wrap').hide();
-                    $('.resume-file-upload-content.none').show();
-                }
-            };
-
-            reader.readAsDataURL(input.files[0]);
-
-        } else {
-            $('.profile-remove-image').on('click', function() {
-                $('.profile-file-upload-input').replaceWith($('.profile-file-upload-input').clone());
-                $('.profile-file-upload-content').hide();
-                $('.profile-file-upload-image').attr('src', '');
-                $('.profile-image-upload-wrap').show();
-            })
-            $('.banner-remove-image').on('click', function() {
-                $('.banner-file-upload-input').replaceWith($('.banner-file-upload-input').clone());
-                $('.banner-file-upload-content').hide();
-                $('.banner-file-upload-image').attr('src', '');
-                $('.banner-image-upload-wrap').show();
-            })
-        }
-    }
-    $('.profile-remove-image').on('click', function() {
-        $('.profile-file-upload-input').replaceWith($('.profile-file-upload-input').clone());
-        $('.profile-file-upload-content').hide();
-        $('.profile-image-upload-wrap').show();
-    })
-    $('.banner-remove-image').on('click', function() {
-        $('.banner-file-upload-input').replaceWith($('.banner-file-upload-input').clone());
-        $('.banner-file-upload-content').hide();
-        $('.banner-image-upload-wrap').show();
-    })
-    $('.cv-remove-image').on('click', function() {
-        $('.resume-file-upload-input').replaceWith($('.resume-file-upload-input').clone());
-        $('.resume-file-upload-content').hide();
-        $('.cv-image-upload-wrap').show();
-    })
-
-    $('.image-upload-wrap').bind('dragover', function() {
-        $('.image-upload-wrap').addClass('image-dropping');
-    });
-    $('.image-upload-wrap').bind('dragleave', function() {
-        $('.image-upload-wrap').removeClass('image-dropping');
-    });
-    </script>
-
-    <script>
-        // toast config
-    toastr.options = {
-        "closeButton": false,
-        "debug": false,
-        "newestOnTop": true,
-        "progressBar": true,
-        "positionClass": "toast-top-right",
-        "preventDuplicates": true,
-        "onclick": null,
-        "showDuration": "300",
-        "hideDuration": "1000",
-        "timeOut": "5000",
-        "extendedTimeOut": "1000",
-        "showEasing": "swing",
-        "hideEasing": "linear",
-        "hideMethod": "fadeOut"
-    }
-
-    $('.login_required').on('click', function(event) {
-        event.preventDefault();
-
-        Swal.fire({
-            title: "Unauthenticated",
-            text: "Performing this action requires logging into your account. Would you like to log in now",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: "Yes, I want to login",
-            cancelButtonText: "Cancel",
-        }).then((result) => {
-            if (result.value) {
-                window.location.href = '/login';
-            }
-        })
-    });
-    $('.no_permission').on('click', function(event) {
-        event.preventDefault();
-        Swal.fire({
-            title: "Unauthorized Access",
-            text: "You don't have permission to perform this action",
-            icon: "warning",
-            dangerMode: true,
-        })
-    });
-
-    $('[data-toggle="tooltip"]').tooltip();
-
-    $(".notification-icon a").off("click").on('click', function(e) {
-        e.stopImmediatePropagation();
-        return true;
-    });
-    </script>
-
-    <script>
-        // read notification by ajax
-    function ReadNotification() {
-        $.ajax({
-            url: "https://jobpilot.templatecookie.com/user/notification/read",
-            type: "POST",
-            data: {
-                _token: 'K3OGSuJX017JfLzR0L1SetcWni1HQhbB6y5HQ0sP'
-            },
-            dataType: 'json',
-            success: function(data) {
-                $('#unNotifications').hide();
-            }
-        });
-    }
-    // read single notification by ajax
-    function readSingleNotification(url, id) {
-        $.ajax({
-            url: "https://jobpilot.templatecookie.com/markasread/single/notification",
-            type: "POST",
-            data: {
-                id: id,
-                _token: 'K3OGSuJX017JfLzR0L1SetcWni1HQhbB6y5HQ0sP'
-            },
-            dataType: 'json',
-            success: function(data) {
-                window.location.href = url;
-            }
-        });
-    }
-    // Call ckeditor
-    if (document.querySelector('#image_ckeditor')) {
-        ClassicEditor.create(document.querySelector('#image_ckeditor'), {
-                ckfinder: {
-                    uploadUrl: "https://jobpilot.templatecookie.com/ckeditor/upload?_token=K3OGSuJX017JfLzR0L1SetcWni1HQhbB6y5HQ0sP"
-                },
-            })
-            .catch(error => {
-                console.error(error);
-            });
-    }
-    // Call ckeditor
-    if (document.querySelector('#image_ckeditor_2')) {
-        ClassicEditor.create(document.querySelector('#image_ckeditor_2'), {
-                ckfinder: {
-                    uploadUrl: "https://jobpilot.templatecookie.com/ckeditor/upload?_token=K3OGSuJX017JfLzR0L1SetcWni1HQhbB6y5HQ0sP"
-                },
-            })
-            .catch(error => {
-                console.error(error);
-            });
-    }
-    // Call ckeditor
-    if (document.querySelector('#editor2')) {
-
-        ClassicEditor.create(document.querySelector('#editor2'))
-            .then(editor => {
-                editor.ui.view.editable.element.style.height = '500px';
-            })
-            .catch(error => {
-                console.error(error);
-            });
-    }
-    // Call ckeditor
-    if (document.querySelector('#editor3')) {
-        ClassicEditor.create(document.querySelector('#editor3'))
-            .then(editor => {
-                editor.ui.view.editable.element.style.height = '500px';
-            })
-            .catch(error => {
-                console.error(error);
-            });
-    }
-    // Call ckeditor
-    if (document.querySelector('#editor4')) {
-        ClassicEditor.create(document.querySelector('#editor4'))
-            .then(editor => {
-                editor.ui.view.editable.element.style.height = '500px';
-            })
-            .catch(error => {
-                console.error(error);
-            });
-    }
-
-    function setLocationSession(form) {
-        axios.post('/set/session', form)
-            .then((res) => {
-                // console.log(res.data);
-                // toastr.success("Location Saved", 'Success!');
-            })
-            .catch((e) => {
-                toastr.error("Something Wrong", 'Error!');
-            });
-    }
-    // about page testimonial
-    if ($(".testimonal2-active").length > 0) {
-        $(".testimonal2-active").slick({
-            slidesToShow: 1,
-            infinite: true,
-            slidesToScroll: 1,
-            dots: true,
-            fade: false,
-            prevArrow: $(".slickprev3"),
-            nextArrow: $(".slicknext3")
-        });
-    }
-    // tab switch style
-    var style = localStorage.getItem("candidate_style") == null ? 'box' : localStorage.getItem("candidate_style");
-    setStyle(style);
-
-    function styleSwitch(style) {
-        localStorage.setItem("candidate_style", style);
-        setStyle(style);
-    }
-
-    function setStyle(style) {
-        if (style == 'box') {
-            $('#nav-home-tab').addClass('active');
-            $('#nav-home').addClass('show active');
-            $('#nav-profile-tab').removeClass('active');
-            $('#nav-profile').removeClass('show active');
-        } else {
-            $('#nav-home-tab').removeClass('active');
-            $('#nav-home').removeClass('show active');
-            $('#nav-profile-tab').addClass('active');
-            $('#nav-profile').addClass('show active');
-        }
-    }
-
-    // category wise search
-    $(document).ready(function() {
-        const form = $("#job_search_form");
-        const radioButtons = form.find("input[aria-data-id='category']");
-
-        // Store the initial action attribute value
-        const defaultAction = form.attr("action");
-
-        // Function to update the form action based on the selected radio button
-        function updateFormAction(selectedRadioValue) {
-            const dataSlug = selectedRadioValue || '';
-            const actionUrl = selectedRadioValue ?
-                "https://jobpilot.templatecookie.com/jobs/category/:slug".replace(':slug', dataSlug) :
-                defaultAction;
-            form.attr("action", actionUrl);
-        }
-
-        // Initialize form action on page load
-        updateFormAction("");
-
-        // Update selected radio value when radio button changes
-        radioButtons.on("change", function() {
-            const selectedRadioValue = $(this).data('id');
-            updateFormAction(selectedRadioValue);
-        });
-    });
-    </script>
+    <script type="module" src="https://jobpilot.templatecookie.com/build/assets/app.a380e14a.js"></script> --}}
 
 
 
 
 
 
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
-
-
-
-
-    <script>
-        !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug getPageViewId".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
-    posthog.init('phc_gZ1gM5ohs92IjEQMziTLugJTGwgOVZy62QRHrgcF2G7', {
-        api_host:'https://us.i.posthog.com',
-        person_profiles: 'identified_only' // or 'always' to create profiles for anonymous users as well
-    })
-    </script>
-
-
-
-
-
-    <script defer src='https://www.google.com/recaptcha/api.js'></script>
+    {{-- <script defer src='https://www.google.com/recaptcha/api.js'></script> --}}
     <script>
         $(document).ready(function() {
             Validate();
@@ -859,7 +489,7 @@
             $("#ModalBtn").css("display", "block");
         }
     </script>
-    <script defer src='https://www.google.com/recaptcha/api.js'></script>
+    {{-- <script defer src='https://www.google.com/recaptcha/api.js'></script> --}}
     <script>
         $(document).ready(function() {
             Validate();

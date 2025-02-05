@@ -164,7 +164,6 @@ Route::middleware(['auth', 'isCandidate'])->group(function () {
     Route::patch('/candidate/settings/account', [CandidateController::class, 'updateAccountSettings'])
         ->name('candidate.settings.account');
 
-
     // Account management routes
     Route::post('/candidate/deactivate', [CandidateController::class, 'deactivateAccount'])
         ->name('candidate.deactivate');
