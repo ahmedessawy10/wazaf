@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Home;
 
+use App\Http\Controllers\Controller;
 use App\Models\Candidate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,9 +14,9 @@ class CandidateController extends Controller
         $query = Candidate::with(['user', 'skills']);
 
         if ($request->search) {
-            $query->where(function($q) use ($request) {
+            $query->where(function ($q) use ($request) {
                 $q->where('job_title', 'like', '%' . $request->search . '%')
-                  ->orWhere('summary', 'like', '%' . $request->search . '%');
+                    ->orWhere('summary', 'like', '%' . $request->search . '%');
             });
         }
 
@@ -26,9 +27,9 @@ class CandidateController extends Controller
 
         // Filter by location
         if ($request->location) {
-            $query->where(function($q) use ($request) {
+            $query->where(function ($q) use ($request) {
                 $q->where('country', 'like', '%' . $request->location . '%')
-                  ->orWhere('city', 'like', '%' . $request->location . '%');
+                    ->orWhere('city', 'like', '%' . $request->location . '%');
             });
         }
 
@@ -45,7 +46,7 @@ class CandidateController extends Controller
     public function dashboard()
     {
         $candidate = Auth::user()->candidate;
-        
+
         $stats = [
             'applied_jobs' => $candidate->appliedJobs()->count(),
             'favorite_jobs' => 0, // TODO: Implement favorites functionality
@@ -83,7 +84,7 @@ class CandidateController extends Controller
         ]);
 
         $candidate = Auth::user()->candidate;
-        
+
         // Handle profile picture upload if provided
         if ($request->hasFile('profile_picture')) {
             $path = $request->file('profile_picture')->store('profile-pictures', 'public');
@@ -163,4 +164,4 @@ class CandidateController extends Controller
 
         return redirect()->route('login')->with('message', 'Your account has been deleted');
     }
-} 
+}

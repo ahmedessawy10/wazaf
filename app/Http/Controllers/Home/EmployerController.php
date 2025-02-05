@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Home;
 
 use App\Models\Employer;
 use App\Models\Industry;
 use Illuminate\Http\Request;
-
+use App\Http\Controllers\Controller;
 class EmployerController extends Controller
 {
     public function index(Request $request)
