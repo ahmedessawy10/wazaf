@@ -5,16 +5,13 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\ProfileController;
 
-use App\Http\Controllers\JobPositionController;
-use App\Http\Controllers\CandidateController;
-use App\Http\Controllers\EmployerController;
 use App\Http\Controllers\Candidate\SettingController;
 
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\AuthController;
-use App\Models\JobPosition;
 
-Route::get('/', HomeController::class)->name('home');
+
+Route::get('/', App\Http\Controllers\Home\HomeController::class)->name('home');
 
 // Route::post('auth/register', [AuthController::class, 'register'])->name('auth.register');
 // Route::post('auth/login', [AuthController::class, 'login'])->name('auth.login');
@@ -24,6 +21,14 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+// home
+Route::get('/candidates', [App\Http\Controllers\Home\CandidateController::class, 'index'])->name('candidates.index');
+Route::get('/candidates/{candidate}', [App\Http\Controllers\Home\CandidateController::class, 'show'])->name('candidates.show');
+
+Route::get('/employers', [App\Http\Controllers\Home\EmployerController::class, 'index'])->name('employers.index');
+Route::get('/employers/{employer}', [App\Http\Controllers\Home\EmployerController::class, 'show'])->name('employers.show');
+
+Route::resource('/jobs', App\Http\Controllers\Home\JobPositionController::class);
 
 Route::middleware('auth')->group(function () {
 
@@ -71,8 +76,8 @@ Route::middleware(['auth', 'isEmployer'])->name('employer.')->group(function () 
     Route::get('/employer/dashboard', function () {
         return view('user.employer.dashboard');
     })->name('dashboard');
-    Route::post('/employer/settings', [EmployerController::class, 'store'])->name('settings');
-    Route::get('/employer/settings', [EmployerController::class, 'getEmployer'])->name('settings');
+    // Route::post('/employer/settings', [EmployerController::class, 'store'])->name('settings');
+    // Route::get('/employer/settings', [EmployerController::class, 'getEmployer'])->name('settings');
 
 
 
@@ -130,7 +135,7 @@ Route::middleware(['auth', 'isEmployer'])->name('employer.')->group(function () 
 });
 
 
-Route::resource('/jobs', JobPositionController::class);
+
 Route::middleware(['auth', 'isCandidate'])->name('candidate.')->group(function () {
     Route::get('/candidate/dashboard', function () {
         return view('candidate.dashboard');
@@ -144,30 +149,26 @@ Route::middleware(['auth', 'isCandidate'])->name('candidate.')->group(function (
     Route::delete('/delete-education/{education}', [SettingController::class, 'deleteEducation'])->name('delete.education');
 });
 
-Route::get('/candidates', [CandidateController::class, 'index'])->name('candidates.index');
-Route::get('/candidates/{candidate}', [CandidateController::class, 'show'])->name('candidates.show');
 
-Route::get('/employers', [EmployerController::class, 'index'])->name('employers.index');
-Route::get('/employers/{employer}', [EmployerController::class, 'show'])->name('employers.show');
 
 Route::middleware(['auth', 'isCandidate'])->group(function () {
-    Route::get('/candidate/dashboard', [CandidateController::class, 'dashboard'])->name('candidate.dashboard');
-    Route::get('/candidate/applied-jobs', [CandidateController::class, 'appliedJobs'])->name('candidate.applied-jobs');
-    Route::get('/candidate/settings', [CandidateController::class, 'settings'])->name('candidate.settings');
-    Route::get('/applyForJob/{id}', [JobPositionController::class, 'applyForJob'])->name('candidate.applyForJob');
+    Route::get('/applyForJob/{id}', [App\Http\Controllers\Home\JobPositionController::class, 'applyForJob'])->name('candidate.applyForJob');
+    // Route::get('/candidate/dashboard', [CandidateController::class, 'dashboard'])->name('candidate.dashboard');
+    // Route::get('/candidate/applied-jobs', [CandidateController::class, 'appliedJobs'])->name('candidate.applied-jobs');
+    // Route::get('/candidate/settings', [CandidateController::class, 'settings'])->name('candidate.settings');
 
     // Settings update routes
-    Route::patch('/candidate/settings/basic-info', [CandidateController::class, 'updateBasicInfo'])
-        ->name('candidate.settings.basic-info');
-    Route::patch('/candidate/settings/profile-info', [CandidateController::class, 'updateProfileInfo'])
-        ->name('candidate.settings.profile-info');
-    Route::patch('/candidate/settings/account', [CandidateController::class, 'updateAccountSettings'])
-        ->name('candidate.settings.account');
+    // Route::patch('/candidate/settings/basic-info', [CandidateController::class, 'updateBasicInfo'])
+    //     ->name('candidate.settings.basic-info');
+    // Route::patch('/candidate/settings/profile-info', [CandidateController::class, 'updateProfileInfo'])
+    //     ->name('candidate.settings.profile-info');
+    // Route::patch('/candidate/settings/account', [CandidateController::class, 'updateAccountSettings'])
+    //     ->name('candidate.settings.account');
 
     // Account management routes
-    Route::post('/candidate/deactivate', [CandidateController::class, 'deactivateAccount'])
-        ->name('candidate.deactivate');
-    Route::delete('/candidate/delete', [CandidateController::class, 'deleteAccount'])
-        ->name('candidate.delete');
+    // Route::post('/candidate/deactivate', [CandidateController::class, 'deactivateAccount'])
+    //     ->name('candidate.deactivate');
+    // Route::delete('/candidate/delete', [CandidateController::class, 'deleteAccount'])
+    //     ->name('candidate.delete');
 });
 require __DIR__ . '/auth.php';

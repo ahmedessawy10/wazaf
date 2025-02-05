@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Home;
 
 use App\Models\Category;
 use App\Models\JobPosition;
 use Illuminate\Http\Request;
 use App\Models\JobApplication;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class JobPositionController extends Controller

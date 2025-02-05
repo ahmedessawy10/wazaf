@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Home;
 
 use App\Models\Category;
 use App\Models\Employer;
 use App\Models\Candidate;
-
+use App\Http\Controllers\Controller;
 use App\Models\JobPosition;
 
 
