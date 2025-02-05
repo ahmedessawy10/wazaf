@@ -9,9 +9,8 @@ use App\Http\Controllers\JobPositionController;
 use App\Http\Controllers\CandidateController;
 use App\Http\Controllers\EmployerController;
 use App\Http\Controllers\Candidate\SettingController;
-use App\Http\Controllers\EmployerController;
+
 use App\Http\Controllers\JobController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 
 
