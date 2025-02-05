@@ -30,10 +30,18 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::middleware(['auth', 'isEmployer'])->name('employer.')->group(function () {
-    Route::get('/employer/dashboard', function () {
-        return view('user.employer.dashboard');
-    })->name('dashboard');
+
+Route::middleware(['auth', 'is_employer'])->name('company.')->group(function () {
+    Route::get('/comProfile',[AccountController::class,'profile'])->name('company.companyProfile');
+    Route::put('/update-profile',[AccountController::class,'updateProfile'])->name('company.updateProfile');
+    Route::get('/logout',[AccountController::class,'logout'])->name('company.logout');
+    Route::post('/update-profile-img',[AccountController::class,'updateProfileImg'])->name('company.updateProfileImg');
+    Route::get('/create-job',[AccountController::class,'createJob'])->name('company.createJob');
+    Route::post('/save-job',[AccountController::class,'saveJob'])->name('company.saveJob');
+    Route::get('/my-jobs',[AccountController::class,'myJobs'])->name('company.myJobs');
+    Route::get('/edit-job/edit/{jobId}',[AccountController::class,'editJob'])->name('company.editJob');
+    Route::post('/update-job/{jobId}',[AccountController::class,'updateJob'])->name('company.updateJob');
+    Route::post('/delete-job',[AccountController::class,'deleteJob'])->name('company.deleteJob');
 });
 
 Route::middleware(['auth', 'isCandidate'])->name('candidate.')->group(function () {
