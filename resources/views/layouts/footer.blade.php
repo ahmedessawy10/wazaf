@@ -1,11 +1,11 @@
-<<<<<<< HEAD
 {{-- Footer --}}
 <footer class="bg-dark text-light py-5">
     <div class="container">
         <div class="row g-4">
             <div class="col-lg-4">
                 <h4 class="mb-4">About Us</h4>
-                <p>We connect talented professionals with amazing opportunities. Join our platform to find your dream job or ideal candidate.</p>
+                <p>We connect talented professionals with amazing opportunities. Join our platform to find your dream
+                    job or ideal candidate.</p>
                 <div class="social-links mt-3">
                     <a href="#" class="text-light me-3"><i class="fab fa-facebook-f"></i></a>
                     <a href="#" class="text-light me-3"><i class="fab fa-twitter"></i></a>
@@ -48,12 +48,5 @@
             <p class="mb-0">&copy; {{ date('Y') }} Your Job Portal. All rights reserved.</p>
         </div>
     </div>
-=======
-<footer>
 
-
-
-
-
->>>>>>> 4c1c557 (Add initial project structure with configuration, models, controllers, and views)
 </footer>

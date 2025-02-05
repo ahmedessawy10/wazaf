@@ -13,16 +13,16 @@ class EmployerController extends Controller
         $query = Employer::with(['user', 'industry']);
 
         if ($request->search) {
-            $query->where(function($q) use ($request) {
+            $query->where(function ($q) use ($request) {
                 $q->where('company_name', 'like', '%' . $request->search . '%')
-                  ->orWhere('about_us', 'like', '%' . $request->search . '%');
+                    ->orWhere('about_us', 'like', '%' . $request->search . '%');
             });
         }
 
         if ($request->location) {
-            $query->where(function($q) use ($request) {
+            $query->where(function ($q) use ($request) {
                 $q->where('city', 'like', '%' . $request->location . '%')
-                  ->orWhere('address', 'like', '%' . $request->location . '%');
+                    ->orWhere('address', 'like', '%' . $request->location . '%');
             });
         }
 
@@ -34,10 +34,10 @@ class EmployerController extends Controller
 
     public function show(Employer $employer)
     {
-        $employer->load(['user', 'industry', 'organizationType', 'jobs' => function($query) {
+        $employer->load(['user', 'industry', 'organizationType', 'jobs' => function ($query) {
             $query->latest()->take(5);
         }]);
-        
+
         return view('employers.show', compact('employer'));
     }
-} 
+}

@@ -3,7 +3,10 @@
 namespace App\Models;
 
 
+
 use App\Models\Tag;
+use App\Models\Category;
+use App\Models\Employer;
 use App\Models\EducationLevel;
 use App\Models\ExperienceLevel;
 use Illuminate\Database\Eloquent\Model;
@@ -44,8 +47,9 @@ class JobPosition extends Model
   }
   public function experience()
   {
-    return $this->belongsTo(ExperienceLevel::class, 'experience_id');
+    return  $this->belongsTo(ExperienceLevel::class, 'experience_id');
   }
+
   public function education()
   {
     return $this->belongsTo(EducationLevel::class, 'education_id');

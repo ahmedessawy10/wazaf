@@ -973,9 +973,7 @@
 
 
 </section>
-<<<<<<< HEAD
-{{-- Jobs Section --}}
-<section class="jobs-section py-5">
+{{-- Jobs Section --}} <section class="jobs-section py-5">
     <div class="container">
         <div class="section-header text-center mb-5">
             <h2 class="fw-bold mb-3">Featured Jobs</h2>
@@ -1076,8 +1074,7 @@
     </div>
 </section>
 
-=======
->>>>>>> 4c1c557 (Add initial project structure with configuration, models, controllers, and views)
+
 
 
 

@@ -48,7 +48,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
 */
 
 Route::middleware(['auth', 'isEmployer'])->name('company.')->group(function () {
-    Route::get('/comProfile', [AccountController::class, 'profile'])->name('companyProfile');
+    Route::get('/comProfile', [AccountController::class, 'comprofile'])->name('companyProfile');
     Route::put('/update-profile', [AccountController::class, 'updateProfile'])->name('company.updateProfile');
     Route::get('/logout', [AccountController::class, 'logout'])->name('company.logout');
     Route::post('/update-profile-img', [AccountController::class, 'updateProfileImg'])->name('company.updateProfileImg');
@@ -130,7 +130,7 @@ Route::middleware(['auth', 'isEmployer'])->name('employer.')->group(function () 
 });
 
 
-Route::resource('/jobs', JobPosition::class);
+Route::resource('/jobs', JobPositionController::class);
 Route::middleware(['auth', 'isCandidate'])->name('candidate.')->group(function () {
     Route::get('/candidate/dashboard', function () {
         return view('candidate.dashboard');
