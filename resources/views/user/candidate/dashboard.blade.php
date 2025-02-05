@@ -182,41 +182,11 @@
 <div class="container-fluid">
     <div class="row">
         <!-- Sidebar -->
-        <div class="col-md-3 col-lg-2 text-white sidebar">
-            <h2 class="mb-4"><i class="fas fa-tachometer-alt"></i> Dashboard</h2>
-            <ul class="nav flex-column">
-                <li class="nav-item">
-                    <a class="nav-link text-white btn-hover" href="#" data-target="overview">
-                        <i class="fas fa-home"></i> Overview
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white btn-hover" href="#" data-target="applied-jobs">
-                        <i class="fas fa-briefcase"></i> Applied Jobs
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white btn-hover" href="#" data-target="favorite-jobs">
-                        <i class="fas fa-heart"></i> Favourite Jobs
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white btn-hover" href="#" data-target="job-alert">
-                        <i class="fas fa-bell"></i> Job Alerts
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white btn-hover" href="#" data-target="settings">
-                        <i class="fas fa-cog"></i> Settings
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white btn-hover" href="#" data-target="logout">
-                        <i class="fas fa-sign-out-alt"></i> Log Out
-                    </a>
-                </li>
-            </ul>
-        </div>
+
+
+       
+
+        <x-candidate-slider></x-candidate-slider>
 
         <!-- Main Content -->
         <div class="col-md-9 col-lg-10 main-content">
@@ -308,138 +278,7 @@
             </div>
 
             <!-- Settings Section -->
-            <div id="settings" class="content-section">
-                <h2 class="mb-4">Settings</h2>
-                <div class="card card-hover p-4">
-
-                    <ul class="nav nav-tabs mb-4">
-                        <li class="nav-item">
-                            <a class="nav-link active" data-bs-toggle="tab" href="#basic-info">Basic Information</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#profile-info">Profile Information</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#account-settings">Account Settings</a>
-                        </li>
-                    </ul>
-
-                    <div class="tab-content">
-
-                        <div class="tab-pane fade show active" id="basic-info">
-                            <form>
-                                <div class="mb-3">
-                                    <label for="profilePicture" class="form-label">Profile Picture</label>
-                                    <input type="file" class="form-control" id="profilePicture" accept="image/*">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="fullName" class="form-label">Full Name</label>
-                                    <input type="text" class="form-control" id="fullName" value="mohamed emad">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="experienceLevel" class="form-label">Experience Level</label>
-                                    <input type="text" class="form-control" id="experienceLevel" value="10+ Years">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="jobTitle" class="form-label">Job Title</label>
-                                    <input type="text" class="form-control" id="jobTitle" value="Software Engineer">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="dateOfBirth" class="form-label">Date of Birth</label>
-                                    <input type="date" class="form-control" id="dateOfBirth" value="1990-01-01">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="personalWebsite" class="form-label">Personal Website</label>
-                                    <input type="url" class="form-control" id="personalWebsite"
-                                        value="https://mohamedemad.com">
-                                </div>
-                                <button type="submit" class="btn btn-primary">Save Changes</button>
-                            </form>
-                        </div>
-
-
-                        <div class="tab-pane fade" id="profile-info">
-                            <form>
-                                <div class="mb-3">
-                                    <label for="maritalStatus" class="form-label">Marital Status</label>
-                                    <select class="form-control" id="maritalStatus">
-                                        <option value="single">Single</option>
-                                        <option value="married">Married</option>
-                                        <option value="divorced">Divorced</option>
-                                    </select>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="gender" class="form-label">Gender</label>
-                                    <select class="form-control" id="gender">
-                                        <option value="male">Male</option>
-                                        <option value="female">Female</option>
-                                    </select>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="jobSpecialization" class="form-label">Job Specialization</label>
-                                    <input type="text" class="form-control" id="jobSpecialization"
-                                        value="Software Development">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="skills" class="form-label">Skills</label>
-                                    <textarea class="form-control" id="skills"
-                                        rows="3">JavaScript, React, Node.js</textarea>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="languages" class="form-label">Languages</label>
-                                    <textarea class="form-control" id="languages" rows="3">English, Arabic</textarea>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="availability" class="form-label">Availability for Work</label>
-                                    <select class="form-control" id="availability">
-                                        <option value="yes">avalable now</option>
-                                        <option value="no">Not available</option>
-                                    </select>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Save Changes</button>
-                            </form>
-                        </div>
-
-                        <div class="tab-pane fade" id="account-settings">
-                            <form>
-                                <div class="mb-3">
-                                    <label for="phoneNumber" class="form-label">Phone Number</label>
-                                    <input type="tel" class="form-control" id="phoneNumber" value="+1234567890">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="email" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="email" value="mohamedemad@gmail.com">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="whatsappNumber" class="form-label">WhatsApp Number</label>
-                                    <input type="tel" class="form-control" id="whatsappNumber" value="+1234567890">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="changePassword" class="form-label">Change Password</label>
-                                    <input type="password" class="form-control" id="changePassword"
-                                        placeholder="New Password">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="confirmPassword" class="form-label">Confirm Password</label>
-                                    <input type="password" class="form-control" id="confirmPassword"
-                                        placeholder="Confirm New Password">
-                                </div>
-                                <div class="mb-3">
-                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                        data-bs-target="#deleteAccountModal">
-                                        Delete Account
-                                    </button>
-                                    <button type="button" class="btn btn-warning" data-bs-toggle="modal"
-                                        data-bs-target="#deactivateAccountModal">
-                                        Deactivate Account
-                                    </button>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Save Changes</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
+          
 
 
             <div id="logout" class="content-section">

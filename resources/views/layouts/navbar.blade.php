@@ -61,7 +61,7 @@
                     <form action="#" method="POST" class="d-flex w-100">
                         <div class="search-box d-flex align-content-center ">
                             <select name="searchType" id="searchType" class="form-select" style="width: 131px;
-    height: 52px;">
+                             height: 52px;">
                                 <option value="jobs">jobs</option>
                                 <option value="candidates">candidates</option>
                                 <option value="companies">companies</option>
@@ -81,7 +81,7 @@
 
                 </div>
 
-                <div class="col-lg-3 col-9 d-flex justify-content-end">
+                <div class="col-lg-3 col-9 d-flex justify-content-end align-items-center">
 
 
 
