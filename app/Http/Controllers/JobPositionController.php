@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\JobPosition;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class JobPositionController extends Controller
@@ -10,9 +11,37 @@ class JobPositionController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $query = JobPosition::with('employer');
+
+        // Search functionality
+        if ($request->has('search')) {
+            $query->where('job_title', 'like', '%' . $request->search . '%');
+        }
+
+        // Location filter
+        if ($request->has('location')) {
+            $query->where('job_location', 'like', '%' . $request->location . '%');
+        }
+
+        // Category filter
+        if ($request->has('category')) {
+            $query->where('category_id', $request->category);
+        }
+
+        // Type filter (full-time, part-time, etc)
+        if ($request->has('type')) {
+            $query->where('job_type', $request->type);
+        }
+
+        $jobs = $query->paginate(10);
+        $categories = Category::all();
+
+        // dd($jobs);
+
+
+        return view('findJob', compact('jobs', 'categories'));
     }
 
     /**
@@ -34,9 +63,15 @@ class JobPositionController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(JobPosition $jobPosition)
+    public function show($id)
     {
-        //
+
+        $job = JobPosition::with(['employer', 'educationLevel', 'experienceLevel'])->findOrFail($id);
+        if (!$job) {
+            return redirect()->route('jobs.index')->with('error', 'الوظيفة غير موجودة');
+        }
+
+        return view('jobDetails', compact('job'));
     }
 
     /**
