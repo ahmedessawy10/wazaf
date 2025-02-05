@@ -9,6 +9,24 @@ class Job extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
+    protected $fillable = [
+        'status', 'queue', 'payload', 'attempts', 
+        'reserved_at', 'available_at', 'created_at'
+    ];
+
+    protected $casts = [
+        'status' => 'string',
+    ];
+    public function getIsPublishedAttribute(): bool
+{
+    return $this->status === 'published';
+}
+
+}
+
+
     public function jobType(){
         return $this->belongsTo(JobType::class);
     }
@@ -26,3 +44,4 @@ class Job extends Model
         return $this->belongsTo(User::class);
     }
 }
+
