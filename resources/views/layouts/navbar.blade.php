@@ -11,6 +11,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
+<<<<<<< HEAD
                     <a class="nav-link {{request()->routeIs('home') ? 'active' : ''}}" aria-current="page"
                         href="/">Home</a>
                 </li>
@@ -18,6 +19,13 @@
                 <li class="nav-item">
                     <a class="nav-link  {{request()->routeIs('jobs.index') ? 'active' : ''}} " aria-current="page"
                         href="{{route('jobs.index')}}">Find Job</a>
+=======
+                    <a class="nav-link active" aria-current="page" href="/">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link " aria-current="page" href="#">Find Job</a>
+>>>>>>> 4c1c557 (Add initial project structure with configuration, models, controllers, and views)
                 </li>
                 <li class="nav-item">
                     <a class="nav-link  {{request()->routeIs('candidates.index') ? 'active' : ''}} " aria-current="page"

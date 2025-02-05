@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4c1c557 (Add initial project structure with configuration, models, controllers, and views)
 :root{
 --primary-color:#0a65cc;
 --gray-color:#5e6670;
@@ -328,6 +332,7 @@ transition: all .4s;
 }
 .popular-category-data p{
     color: var(--gray-color);
+<<<<<<< HEAD
 }
 
 /* Jobs Section */
@@ -397,4 +402,6 @@ footer .btn-primary {
 footer .btn-primary:hover {
     background-color: transparent;
     color: var(--primary-color);
+=======
+>>>>>>> 4c1c557 (Add initial project structure with configuration, models, controllers, and views)
 }

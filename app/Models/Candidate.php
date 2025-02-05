@@ -57,4 +57,8 @@ class Candidate extends Model
             ->withPivot('status', 'cover_letter')
             ->withTimestamps();
     }
+=======
+
+
+>>>>>>> 4c1c557 (Add initial project structure with configuration, models, controllers, and views)
 }

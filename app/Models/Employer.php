@@ -8,6 +8,10 @@ use App\Models\JobPosition;
 use App\Models\OrganizationType;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+=======
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+>>>>>>> 4c1c557 (Add initial project structure with configuration, models, controllers, and views)
 
 class Employer extends Model
 {

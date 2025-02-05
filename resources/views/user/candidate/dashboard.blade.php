@@ -1,6 +1,7 @@
 @extends('layouts.users-app')
 
 @section("css")
+<<<<<<< HEAD
 <style>
     /* Custom CSS */
     .sidebar {
@@ -299,10 +300,16 @@
         </div>
     </div>
 </div>
+=======
+
+@endsection
+@section("centent")
+>>>>>>> 4c1c557 (Add initial project structure with configuration, models, controllers, and views)
 
 @endsection
 
 @section("script")
+<<<<<<< HEAD
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const links = document.querySelectorAll('.sidebar .nav-link');
@@ -331,3 +338,7 @@
 
 
 <!-- Bootstrap JS -->
+=======
+
+@endsection
+>>>>>>> 4c1c557 (Add initial project structure with configuration, models, controllers, and views)

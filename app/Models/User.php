@@ -47,6 +47,7 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+<<<<<<< HEAD
     }
 
     public function candidate()
@@ -56,3 +57,12 @@ class User extends Authenticatable
 
     
 }
+=======
+        
+    }
+//     public function employer()
+//     {
+//         return $this->hasOne(Employer::class);
+//     }
+ }
+>>>>>>> 4c1c557 (Add initial project structure with configuration, models, controllers, and views)
