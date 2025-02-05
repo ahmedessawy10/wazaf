@@ -1,7 +1,7 @@
 @extends('layouts.users-app')
 
 @section("css")
-<<<<<<< HEAD
+
 <style>
     /* Custom CSS */
     .sidebar {
@@ -185,7 +185,7 @@
         <!-- Sidebar -->
 
 
-       
+
 
         <x-candidate-slider></x-candidate-slider>
 
@@ -226,7 +226,7 @@
             </div>
 
             <!-- Applied Jobs Section -->
-          
+
 
             <!-- Favorite Jobs Section -->
             <div id="favorite-jobs" class="content-section">
@@ -251,7 +251,7 @@
             </div>
 
             <!-- Settings Section -->
-          
+
 
 
             <div id="logout" class="content-section">
@@ -300,16 +300,16 @@
         </div>
     </div>
 </div>
-=======
+
 
 @endsection
-@section("centent")
->>>>>>> 4c1c557 (Add initial project structure with configuration, models, controllers, and views)
+{{-- @section("centent")
 
-@endsection
+
+@endsection --}}
 
 @section("script")
-<<<<<<< HEAD
+
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const links = document.querySelectorAll('.sidebar .nav-link');
@@ -331,14 +331,3 @@
     });
 </script>
 @endsection
-
-
-
-
-
-
-<!-- Bootstrap JS -->
-=======
-
-@endsection
->>>>>>> 4c1c557 (Add initial project structure with configuration, models, controllers, and views)

@@ -50,8 +50,7 @@
                 </div>
             </div>
             <div class="right">
-                @auth
-
+                @auth()
                 @if(Auth::user()->candidate->appliedJobs()->where('job_applications.job_position_id',
                 $job->id)->exists())
                 <p>you have applied</p>

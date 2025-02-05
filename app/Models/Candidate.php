@@ -36,14 +36,14 @@ class Candidate extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function experiences()
+    public function experienceLevel()
     {
-        return $this->hasMany(Experience::class);
+        return $this->hasMany(ExperienceLevel::class);
     }
 
-    public function education()
+    public function educationLevel()
     {
-        return $this->hasMany(Education::class);
+        return $this->hasMany(EducationLevel::class);
     }
 
     public function skills()
