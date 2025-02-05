@@ -45,12 +45,12 @@ class JobPosition extends Model
   {
     return $this->belongsTo(Category::class);
   }
-  public function experience()
+  public function experienceLevel()
   {
     return  $this->belongsTo(ExperienceLevel::class, 'experience_id');
   }
 
-  public function education()
+  public function educationLevel()
   {
     return $this->belongsTo(EducationLevel::class, 'education_id');
   }
