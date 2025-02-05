@@ -12,8 +12,7 @@ use App\Http\Controllers\Candidate\SettingController;
 
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\AuthController;
-
-
+use App\Models\JobPosition;
 
 Route::get('/', HomeController::class)->name('home');
 
@@ -131,6 +130,7 @@ Route::middleware(['auth', 'isEmployer'])->name('employer.')->group(function () 
 });
 
 
+Route::resource('/jobs', JobPosition::class);
 Route::middleware(['auth', 'isCandidate'])->name('candidate.')->group(function () {
     Route::get('/candidate/dashboard', function () {
         return view('candidate.dashboard');
@@ -163,6 +163,7 @@ Route::middleware(['auth', 'isCandidate'])->group(function () {
         ->name('candidate.settings.profile-info');
     Route::patch('/candidate/settings/account', [CandidateController::class, 'updateAccountSettings'])
         ->name('candidate.settings.account');
+
 
     // Account management routes
     Route::post('/candidate/deactivate', [CandidateController::class, 'deactivateAccount'])
