@@ -1,3 +1,4 @@
+
 :root{
 --primary-color:#0a65cc;
 --gray-color:#5e6670;
@@ -328,6 +329,7 @@ transition: all .4s;
 }
 .popular-category-data p{
     color: var(--gray-color);
+
 }
 
 /* Jobs Section */
@@ -397,4 +399,5 @@ footer .btn-primary {
 footer .btn-primary:hover {
     background-color: transparent;
     color: var(--primary-color);
+
 }

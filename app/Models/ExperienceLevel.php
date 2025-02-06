@@ -2,17 +2,13 @@
 
 namespace App\Models;
 
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class ExperienceLevel extends Model
 {
-    use HasFactory;
-     protected $fillable = [
-        'level'
-    ];
-      public function jobPositions()
-    {
-        return $this->hasMany(JobPosition::class , 'experience_id');
-    }
+    protected $table = 'experience_levels';
 }

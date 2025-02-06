@@ -7,14 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class JobType extends Model
 {
-    use HasFactory;
-    protected $fillable = [
-        'name',
-          'status',
-            'app_name',
-             'app_email',
-           'logo',
-           'favicon',
-           'theme_color'
-    ];
+  use HasFactory;
+
+  protected $fillable = [
+    'name',
+    'status',
+    'app_name',
+    'app_email',
+    'logo',
+    'favicon',
+    'theme_color'
+  ];
 }

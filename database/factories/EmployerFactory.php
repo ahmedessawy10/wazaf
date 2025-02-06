@@ -24,6 +24,8 @@ class EmployerFactory extends Factory
             'user_id' => User::factory()->employer(),
             'about_us' => $this->faker->paragraphs(3, true),
             'company_name' => $this->faker->company(),
+
+            'about_us' => $this->faker->paragraph(),
             'website_url' => $this->faker->url(),
             'year_establish' => $this->faker->year(),
             'address' => $this->faker->address(),

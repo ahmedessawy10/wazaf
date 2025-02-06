@@ -50,12 +50,22 @@
                 </div>
             </div>
             <div class="right">
-                @auth
-                <a href="" class="btn" style="background-color:var(--primary-color);color:#fff">apply</a>
+                @auth()
+                @if(Auth::user()->candidate->appliedJobs()->where('job_applications.job_position_id',
+                $job->id)->exists())
+                <p>you have applied</p>
                 @else
-                <button onclick="notAuth()" class="btn"
-                    style="background-color:var(--primary-color);color:#fff">apply</button>
+                <a href="{{ route('candidate.applyForJob', $job->id) }}" class="btn"
+                    style="background-color:var(--primary-color); color:#fff">
+                    Apply
+                </a>
+                @endif
+                @else
+                <button onclick="notAuth()" class="btn" style="background-color:var(--primary-color); color:#fff">
+                    Apply
+                </button>
                 @endauth
+
             </div>
         </div>
 

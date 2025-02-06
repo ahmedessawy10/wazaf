@@ -127,8 +127,7 @@
                 <div class="row ">
                     <div class="col-xl-5 col-lg-6 col-md-12 tw-bg-white tw-relative tw-z-50">
                         <div class="auth-box2">
-                            <form id="formId" action="https://jobpilot.templatecookie.com/register" method="POST"
-                                class="rt-form">
+                            <form id="formId" action="{{route('register')}}" method="POST" class="rt-form">
                                 <input type="hidden" name="_token" value="SOpJpl6kpRnfRxzc0LDACcwEuC1VrhDLS27kKPvV"
                                     autocomplete="off">
                                 <div class="row">

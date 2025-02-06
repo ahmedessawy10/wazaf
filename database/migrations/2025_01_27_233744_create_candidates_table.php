@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
             $table->string('summary')->nullable();
             $table->string('photo')->nullable();
+
             $table->string('personal_website')->nullable();
             $table->enum('military_status', ['yes', 'no'])->default('no')->nullable();
             $table->enum('gender', ['male', 'female'])->default('male')->nullable();

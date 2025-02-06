@@ -21,12 +21,14 @@ return new class extends Migration
             $table->foreignId('education_id')->constrained('education_levels')->onDelete('cascade');
             $table->date('deadline');
             $table->integer('total_positions')->default(1);
-            $table->enum("status", ["open", "closed"])->default("open");
+            $table->enum("status", ["open", "closed", "pending"])->default("pending");
             $table->enum("job_type", ["full_time", "part_time", "freelance", "internship"])->default("full_time");
             $table->string("job_location")->nullable();
             $table->enum("salary_type", ["hourly", "monthly", "yearly", 'project'])->default("monthly");
             $table->string("min_salary")->nullable();
             $table->string("max_salary")->nullable();
+            $table->text('benefits')->nullable();
+            $table->text('keywords')->nullable();
             $table->timestamps();
         });
     }

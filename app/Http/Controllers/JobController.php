@@ -71,23 +71,43 @@ class JobController extends Controller
         ]);
 
         // Redirect or return a response
+
         return redirect()->route('employer.index')->with('success', 'Job posted successfully!');
+
     }
     /**
      * Display the specified resource.
      */
-    public function show(JobPosition $jobPosition)
-    {
 
+
+    public function show($id)
+    {
+        $job = JobPosition::findOrFail($id);  // Fetch the job details
+        return view('user.employer.show', compact('job'));  // Pass the job to the view
     }
+    
+
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(JobPosition $jobPosition)
-    {
-          // To load the edit job view page
+
+    public function edit($id)
+{
+    // Retrieve the job position by ID, or fail if not found
+    $jobPosition = JobPosition::find($id); // Make sure to handle a case where $jobPosition might be null.
+
+    if (!$jobPosition) {
+        return redirect()->route('employer.jobs.index')->with('error', 'Job position not found');
     }
+
+    // Return the edit view with the job position data
+    return view('user.employer.edit', compact('jobPosition'));
+}
+
+    
+    
+
 
     /**
      * Update the specified resource in storage.
@@ -138,18 +158,35 @@ class JobController extends Controller
           ], 200);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(JobPosition $jobPosition)
-    {
-           // To delete a specific job
+    public function destroy($id)
+{
+    $job = JobPosition::findOrFail($id);
+
+    // Ensure the job belongs to the current employer
+    if ($job->employer_id !== Auth::id()) {
+        return redirect()->route('employer.jobs.index')->with('error', 'You cannot delete this job.');
     }
-     public function getRecentJobs(){
-         $jobs=  JobPosition::where('employer_id', Auth::id()) ->latest()
-                ->take(5)->get();
-             return response()->json([
-                "data" => $jobs
-            ], 200);
+
+    // Delete the job
+    $job->delete();
+
+    // Redirect with a success message
+    return redirect()->route('employer.jobs.index')->with('success', 'Job deleted successfully!');
 }
+
+
+    
+    // public function destroy(JobPosition $jobPosition)
+    // {
+       
+        
+    // }
+    //  public function getRecentJobs(){
+    //      $jobs=  JobPosition::where('employer_id', Auth::id()) ->latest()
+    //             ->take(5)->get();
+    //          return response()->json([
+    //             "data" => $jobs
+    //         ], 200);
+    //     }
+
 }
