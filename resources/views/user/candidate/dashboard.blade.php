@@ -184,122 +184,112 @@
     <div class="row">
         <!-- Sidebar -->
 
+        <div class="row">
+            <div class="col-3">
 
+                <x-candidate-slider></x-candidate-slider>
+            </div>
+            <div class="col-8 mx-3">
+                <div class="col-12 main-content">
+                    <!-- Overview Section -->
+                    <div id="overview" class="content-section active">
+                        <h1 class="mb-4">Hello, {{Auth::user()->name}}</h1>
+                        <p class="lead mb-4"></p>
 
-
-        <x-candidate-slider></x-candidate-slider>
-
-        <!-- Main Content -->
-        <div class="col-md-9 col-lg-10 main-content">
-            <!-- Overview Section -->
-            <div id="overview" class="content-section active">
-                <h1 class="mb-4">Hello, mohamed emad</h1>
-                <p class="lead mb-4">Here are your daily activities & career opportunities:</p>
-
-                <!-- Stats -->
-                <div class="row mb-4">
-                    <div class="col-md-3">
-                        <div class="card text-center card-hover">
-                            <h3>100</h3>
-                            <p class="text-muted">Jobs Applied</p>
+                        <!-- Stats -->
+                        <div class="row mb-4">
+                            <div class="col-md-3">
+                                <div class="card text-center card-hover">
+                                    <h3>{{$count_application ?? 0 }}</h3>
+                                    <p class="text-muted">Jobs Applied</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card text-center card-hover">
+                                    <h3>0</h3>
+                                    <p class="text-muted">Favourite Jobs</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card text-center card-hover">
+                                    <h3>0</h3>
+                                    <p class="text-muted">Job Alerts</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card text-center card-hover">
+                                    <h3>0</h3>
+                                    <p class="text-muted">Messages</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-3">
-                        <div class="card text-center card-hover">
-                            <h3>5</h3>
-                            <p class="text-muted">Favourite Jobs</p>
+
+                    <!-- Applied Jobs Section -->
+
+
+                    <!-- Favorite Jobs Section -->
+                    <div id="favorite-jobs" class="content-section">
+                        <h2 class="mb-4">Favorite Jobs</h2>
+                        <div class="card card-hover">
+                            <h3>MERN Stack Developer</h3>
+                            <p>Intern</p>
+                            <p>Burkina Faso</p>
+                            <p>500 - 2K USD</p>
+                            <p>3 days from now</p>
                         </div>
                     </div>
-                    <div class="col-md-3">
-                        <div class="card text-center card-hover">
-                            <h3>6</h3>
-                            <p class="text-muted">Job Alerts</p>
+
+                    <!-- Job Alert Section -->
+                    <div id="job-alert" class="content-section">
+                        <h2 class="mb-4">Job Alerts</h2>
+                        <div class="card card-hover">
+                            <p>New job posted suiting your profile</p>
+                            <p>at Tech Giant as Executive</p>
+                            <p>5 hours ago</p>
                         </div>
                     </div>
-                    <div class="col-md-3">
-                        <div class="card text-center card-hover">
-                            <h3>3</h3>
-                            <p class="text-muted">Messages</p>
-                        </div>
+
+                    <!-- Settings Section -->
+
+
+
+                    <div id="logout" class="content-section">
+                        <h2 class="mb-4">Log Out</h2>
+                        <p>Are you sure you want to log out?</p>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- Applied Jobs Section -->
-
-
-            <!-- Favorite Jobs Section -->
-            <div id="favorite-jobs" class="content-section">
-                <h2 class="mb-4">Favorite Jobs</h2>
-                <div class="card card-hover">
-                    <h3>MERN Stack Developer</h3>
-                    <p>Intern</p>
-                    <p>Burkina Faso</p>
-                    <p>500 - 2K USD</p>
-                    <p>3 days from now</p>
+        <div class="modal fade" id="deleteAccountModal" tabindex="-1" aria-labelledby="deleteAccountModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteAccountModalLabel">Delete Account</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Are you sure you want to permanently delete your account? This action cannot be undone.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-danger">Delete Account</button>
+                    </div>
                 </div>
             </div>
-
-            <!-- Job Alert Section -->
-            <div id="job-alert" class="content-section">
-                <h2 class="mb-4">Job Alerts</h2>
-                <div class="card card-hover">
-                    <p>New job posted suiting your profile</p>
-                    <p>at Tech Giant as Executive</p>
-                    <p>5 hours ago</p>
-                </div>
-            </div>
-
-            <!-- Settings Section -->
-
-
-
-            <div id="logout" class="content-section">
-                <h2 class="mb-4">Log Out</h2>
-                <p>Are you sure you want to log out?</p>
-            </div>
         </div>
-    </div>
-</div>
 
-<div class="modal fade" id="deleteAccountModal" tabindex="-1" aria-labelledby="deleteAccountModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="deleteAccountModalLabel">Delete Account</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p>Are you sure you want to permanently delete your account? This action cannot be undone.</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-danger">Delete Account</button>
-            </div>
-        </div>
+
+
     </div>
 </div>
 
 
-<div class="modal fade" id="deactivateAccountModal" tabindex="-1" aria-labelledby="deactivateAccountModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="deactivateAccountModalLabel">Deactivate Account</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p>Are you sure you want to deactivate your account? You can reactivate it later by logging in.</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-warning">Deactivate Account</button>
-            </div>
-        </div>
-    </div>
-</div>
+
+<!-- Main Content -->
+
 
 
 @endsection
@@ -311,23 +301,23 @@
 @section("script")
 
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const links = document.querySelectorAll('.sidebar .nav-link');
-        const sections = document.querySelectorAll('.content-section');
+    // document.addEventListener('DOMContentLoaded', function () {
+    //     const links = document.querySelectorAll('.sidebar .nav-link');
+    //     const sections = document.querySelectorAll('.content-section');
 
-        links.forEach(link => {
-            link.addEventListener('click', function (e) {
-                e.preventDefault();
+    //     links.forEach(link => {
+    //         link.addEventListener('click', function (e) {
+    //             e.preventDefault();
 
 
-                links.forEach(l => l.classList.remove('active'));
-                sections.forEach(section => section.classList.remove('active'));
+    //             links.forEach(l => l.classList.remove('active'));
+    //             sections.forEach(section => section.classList.remove('active'));
 
-                const target = this.getAttribute('data-target');
-                document.getElementById(target).classList.add('active');
-                this.classList.add('active');
-            });
-        });
-    });
+    //             const target = this.getAttribute('data-target');
+    //             document.getElementById(target).classList.add('active');
+    //             this.classList.add('active');
+    //         });
+    //     });
+    // });
 </script>
 @endsection

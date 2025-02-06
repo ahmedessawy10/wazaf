@@ -111,7 +111,7 @@
 
                                 @if(auth()->user()->role == 'candidate')
                                 <li><a class="dropdown-item" href="{{route('candidate.dashboard')}}">Dashboard</a></li>
-                                <li><a class="dropdown-item" href="{{route('candidate.settings')}}">setting</a></li>
+                                <li><a class="dropdown-item" href="{{route('candidate.setting')}}">setting</a></li>
                                 @elseif(auth()->user()->role == 'employer')
                                 <li><a class="dropdown-item" href="#">Dashboard</a></li>
                                 <li><a class="dropdown-item" href="#">setting</a></li>

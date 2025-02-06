@@ -13,11 +13,14 @@ return new class extends Migration
     {
         Schema::create('educations', function (Blueprint $table) {
             $table->id();
-            $table->string('institute_name');
-            $table->string('degree');
-            $table->year('year');
-            $table->text('notes')->nullable();
             $table->foreignId('candidate_id')->constrained('candidates')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('institution');
+            $table->string('degree');
+            $table->string('field_of_study');
+            $table->date('start_date');
+            $table->date('end_date')->nullable();
+            $table->boolean('is_current')->default(false);
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('education');
+        Schema::dropIfExists('educations');
     }
 };

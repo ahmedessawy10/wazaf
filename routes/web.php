@@ -66,9 +66,17 @@ Route::middleware(['auth', 'isEmployer'])->name('company.')->group(function () {
 });
 
 Route::middleware(['auth', 'isCandidate'])->name('candidate.')->prefix('candidate')->group(function () {
-    Route::get('/dashboard', function () {
-        return view('user.candidate.dashboard');
-    });
+    Route::get('/dashboard', [App\Http\Controllers\Candidate\DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/applyedJob', [App\Http\Controllers\Candidate\DashboardController::class, 'applyedJob'])->name('applyedJob');
+    Route::get('/setting', [App\Http\Controllers\Candidate\SettingController::class, 'index'])->name('setting');
+    Route::get('/applyedJob/cancel/{id}', [App\Http\Controllers\Candidate\DashboardController::class, 'cancelApply'])->name('applyedJob.cancel');
+
+    Route::patch('/candidate/settings/update-profile', [App\Http\Controllers\Candidate\SettingController::class, 'updateProfile'])->name('settings.update-profile');
+    Route::post('/candidate/experience/add', [App\Http\Controllers\Candidate\SettingController::class, 'addExperience'])->name('experience.add');
+    Route::post('/candidate/education/add', [App\Http\Controllers\Candidate\SettingController::class, 'addEducation'])->name('education.add');
+    Route::patch('/candidate/settings/update-account', [App\Http\Controllers\Candidate\SettingController::class, 'updateAccount'])->name('settings.update-account');
+    Route::delete('/candidate/experience/{experience}', [App\Http\Controllers\Candidate\SettingController::class, 'deleteExperience'])->name('experience.delete');
+    Route::delete('/candidate/education/{education}', [App\Http\Controllers\Candidate\SettingController::class, 'deleteEducation'])->name('education.delete');
 });
 
 
@@ -136,23 +144,12 @@ Route::middleware(['auth', 'isEmployer'])->name('employer.')->group(function () 
 
 
 
-Route::middleware(['auth', 'isCandidate'])->name('candidate.')->group(function () {
-    Route::get('/candidate/dashboard', function () {
-        return view('candidate.dashboard');
-    })->name('dashboard');
-
-    Route::get('/settings', [SettingController::class, 'index'])->name('settings');
-    Route::post('/update-profile', [SettingController::class, 'updateProfile'])->name('update.profile');
-    Route::post('/add-experience', [SettingController::class, 'addExperience'])->name('add.experience');
-    Route::post('/add-education', [SettingController::class, 'addEducation'])->name('add.education');
-    Route::delete('/delete-experience/{experience}', [SettingController::class, 'deleteExperience'])->name('delete.experience');
-    Route::delete('/delete-education/{education}', [SettingController::class, 'deleteEducation'])->name('delete.education');
-});
 
 
 
 Route::middleware(['auth', 'isCandidate'])->group(function () {
     Route::get('/applyForJob/{id}', [App\Http\Controllers\Home\JobPositionController::class, 'applyForJob'])->name('candidate.applyForJob');
+
     // Route::get('/candidate/dashboard', [CandidateController::class, 'dashboard'])->name('candidate.dashboard');
     // Route::get('/candidate/applied-jobs', [CandidateController::class, 'appliedJobs'])->name('candidate.applied-jobs');
     // Route::get('/candidate/settings', [CandidateController::class, 'settings'])->name('candidate.settings');

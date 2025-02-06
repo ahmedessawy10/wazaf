@@ -6,7 +6,7 @@ use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Employer;
 use App\Models\Candidate;
-<<<<<<< HEAD
+
 use App\Models\JobPosition;
 use Illuminate\Database\Seeder;
 use Database\Seeders\UserSeeder;
@@ -16,9 +16,7 @@ use Database\Seeders\IndustrySeeder;
 use Database\Seeders\EducationLevelSeeder;
 use Database\Seeders\ExperienceLevelSeeder;
 use Database\Seeders\OrganizationTypeSeeder;
-=======
-use Illuminate\Database\Seeder;
->>>>>>> 4c1c557 (Add initial project structure with configuration, models, controllers, and views)
+
 
 
 class DatabaseSeeder extends Seeder
@@ -43,7 +41,7 @@ class DatabaseSeeder extends Seeder
         ]);
         Employer::factory(10)->create();
         Candidate::factory(20)->create();
-<<<<<<< HEAD
+
         JobPosition::factory(100)
             ->create();
 
@@ -61,7 +59,6 @@ class DatabaseSeeder extends Seeder
         // JobPosition::factory(10)
         //     ->seniorLevel()
         //     ->create();
-=======
->>>>>>> 4c1c557 (Add initial project structure with configuration, models, controllers, and views)
+
     }
 }
