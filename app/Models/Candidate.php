@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+use App\Models\Skill;
+use App\Models\Education;
+use App\Models\Experience;
 use App\Models\JobPosition;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -56,5 +59,16 @@ class Candidate extends Model
         return $this->belongsToMany(JobPosition::class, 'job_applications')
             ->withPivot('status', 'cover_letter')
             ->withTimestamps();
+    }
+
+    public function experiences()
+    {
+        return $this->hasMany(Experience::class, 'candidate_id');
+    }
+
+
+    public function educations()
+    {
+        return $this->hasMany(Education::class, 'candidate_id');
     }
 }

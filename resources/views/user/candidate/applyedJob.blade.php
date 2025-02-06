@@ -118,7 +118,8 @@
         overflow: hidden;
     }
 
-    .btn-hover:hover {
+    .btn-hover:hover,
+    .btn-hover.active {
         transform: scale(1.05);
         background-color: rgba(255, 255, 255, 0.2);
     }
@@ -139,9 +140,6 @@
         color: #555;
     }
 
-    .content-section {
-        display: none;
-    }
 
     .content-section.active {
         display: block;
@@ -179,38 +177,64 @@
 @endsection
 @section("centent")
 
+<div class="container-fluid px-1 py-4">
+    <div class="row">
 
-<x-candidate-slider></x-candidate-slider>
+        <div class="col-2">
+            <x-candidate-slider></x-candidate-slider>
 
-<div id="applied-jobs" class="content-section">
-    <h2 class="mb-4">Applied Jobs</h2>
-    <table class="table table-hover shadow-sm">
-        <thead>
-            <tr>
-                <th>Job</th>
-                <th>Date Applied</th>
-                <th>Status</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Java Points (Contractual)</td>
-                <td>Jan 31, 2025 14:01</td>
-                <td><span class="text-success">✓ Active</span></td>
-                <td><a href="#" class="text-primary text-decoration-none btn-hover">View Details</a>
-                </td>
-            </tr>
-            <tr>
-                <td>Zamblis (300 - 500 USD)</td>
-                <td>Jan 31, 2025 14:01</td>
-                <td><span class="text-success">✓ Active</span></td>
-                <td><a href="#" class="text-primary text-decoration-none btn-hover">View Details</a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+        </div>
+
+        <div class="col-9">
+            <div id="applied-jobs" class="content-section">
+                <h2 class="mb-4">Applied Jobs</h2>
+                <table class="table table-hover shadow-sm">
+                    <thead>
+                        <tr>
+                            <th>Job Id</th>
+                            <th>Job title</th>
+                            <th>company name</th>
+                            <th>apply date</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        {{-- @dump($applyedJobs->appliedJobs) --}}
+                        @forelse ($applyedJobs->appliedJobs as $job)
+                        <tr class="text-center">
+                            <td>{{ $job->id }} </td>
+                            <td>{{ $job->job_title }} </td>
+                            <td>{{ $job->employer->company_name }} </td>
+                            <td>{{ $job->created_at->format('M d, Y H:i') }} </td>
+                            <td><span class="text-success">{{ $job->status }}</span></td>
+                            <td>
+                                <a href="{{route('jobs.show',$job->id)}}"
+                                    class="btn btn-primary text-decoration-none btn-hover">View Details</a>
+
+                                <a href="{{route('candidate.applyedJob.cancel',$job->id)}}"
+                                    class="btn btn-danger text-decoration-none btn-hover">cancel
+                                    apply</a>
+                            </td>
+                        </tr>
+                        @empty
+                        <tr>
+                            <td colspan="4" class="text-center">لا توجد وظائف متقدمة</td>
+                        </tr>
+                        @endforelse
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
 </div>
+
+
+
+
 @endsection
 
 @section("script")

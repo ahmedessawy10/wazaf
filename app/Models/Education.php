@@ -2,16 +2,13 @@
 
 namespace App\Models;
 
-<<<<<<< HEAD
-=======
-use Illuminate\Database\Eloquent\Factories\HasFactory;
->>>>>>> 4c1c557 (Add initial project structure with configuration, models, controllers, and views)
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Education extends Model
 {
     use HasFactory;
+    protected $table = 'educations';
 
     protected $fillable = [
         'candidate_id',
@@ -32,13 +29,10 @@ class Education extends Model
 
     public function candidate()
     {
-        return $this->belongsTo(Candidate::class);
+        return $this->belongsTo(Candidate::class,'candidate_id');
     }
 }
-=======
-    use HasFactory;
-        protected $fillable = [
-        'level'
-    ];
-}
->>>>>>> 4c1c557 (Add initial project structure with configuration, models, controllers, and views)
+
+   
+
+
