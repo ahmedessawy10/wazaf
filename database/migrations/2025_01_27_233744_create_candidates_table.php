@@ -16,10 +16,8 @@ return new class extends Migration
             $table->string('job_title')->nullable();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
             $table->string('summary')->nullable();
-<<<<<<< HEAD
             $table->string('photo')->nullable();
-=======
->>>>>>> 4c1c557 (Add initial project structure with configuration, models, controllers, and views)
+
             $table->string('personal_website')->nullable();
             $table->enum('military_status', ['yes', 'no'])->default('no')->nullable();
             $table->enum('gender', ['male', 'female'])->default('male')->nullable();

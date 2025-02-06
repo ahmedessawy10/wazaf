@@ -15,15 +15,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
             $table->string('company_name')->nullable();
-<<<<<<< HEAD
+
             $table->text('about_us')->nullable();
             $table->string('website_url')->nullable();
-            $table->text('company_vision')->nullable();
-=======
-            $table->string('about_us')->nullable();
-            $table->string('website_url')->nullable();
             $table->string('company_vision')->nullable();
->>>>>>> 4c1c557 (Add initial project structure with configuration, models, controllers, and views)
             $table->string('company_email')->nullable();
             $table->year('year_establish')->nullable();
             $table->enum('team_size', ['only_one', '10 Members', '10-20 Members', '20-50 Members', '50-100 Members', '100-200 Members'])->nullable();
