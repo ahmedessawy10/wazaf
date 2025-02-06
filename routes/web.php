@@ -5,6 +5,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\JobPositionController;
+use App\Http\Controllers\JobController;
+use App\Http\Controllers\EmployerController;
 
 Route::get('/', HomeController::class)->name('home');
 
@@ -24,7 +26,32 @@ Route::prefix('jobs')->name('jobs.')->group(function () {
         Route::delete('/{jobPosition}', [JobPositionController::class, 'destroy'])->name('destroy');
     });
 });
+// Route::middleware(['auth', 'isEmployer'])->name('employer.')->group(function () {
+//     Route::get('/employer/dashboard', function () {
+//        return view('user.employer.dashboard');
+//     })->name('employer.dashboard');
+   
+Route::resource('employer', JobController::class)->only([
+    'index', 'create', 'store','show','edit','update','destroy'
+]);
+// Route::get('employer', [JobController::class, 'create'])->name('employer.jobs.create');
+// Route::get('employer/jobs', [JobController::class, 'store'])->name('employer.jobs.store');
 
+// Route::get('pro', [EmployerController::class, 'index'])->name('employer.pro.index');
+// Route::get('pro/create', [EmployerController::class, 'create'])->name('employer.pro.create');
+// Route::post('pro', [EmployerController::class, 'store'])->name('employer.pro.store');
+// Route::get('pro/{employer}/edit', [EmployerController::class, 'edit'])->name('employer.pro.edit');
+// Route::put('pro/{employer}', [EmployerController::class, 'update'])->name('employer.pro.update');
+// Route::get('pro/{employer}', [EmployerController::class, 'show'])->name('employer.pro.show');
+// Route::delete('pro/{employer}', [EmployerController::class, 'destroy'])->name('employer.pro.destroy');
+
+
+// Route::get('/company/applications/{id}', [EmployerController::class, 'viewApplicationDetails'])->name('employer.applications.show');
+// Route::post('/company/applications/{id}/approve', [EmployerController::class, 'approveApplication'])->name('employer.applications.approve');
+// Route::post('/company/applications/{id}/reject', [EmployerController::class, 'rejectApplication'])->name('employer.applications.reject');
+// Route::get('/company/applications', [EmployerController::class, 'showApplications'])->name('applications.index');
+
+// });
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -33,16 +60,7 @@ Route::middleware('auth')->group(function () {
 
 
 Route::middleware(['auth', 'is_employer'])->name('company.')->group(function () {
-    Route::get('/comProfile',[AccountController::class,'profile'])->name('company.companyProfile');
-    Route::put('/update-profile',[AccountController::class,'updateProfile'])->name('company.updateProfile');
-    Route::get('/logout',[AccountController::class,'logout'])->name('company.logout');
-    Route::post('/update-profile-img',[AccountController::class,'updateProfileImg'])->name('company.updateProfileImg');
-    Route::get('/create-job',[AccountController::class,'createJob'])->name('company.createJob');
-    Route::post('/save-job',[AccountController::class,'saveJob'])->name('company.saveJob');
-    Route::get('/my-jobs',[AccountController::class,'myJobs'])->name('company.myJobs');
-    Route::get('/edit-job/edit/{jobId}',[AccountController::class,'editJob'])->name('company.editJob');
-    Route::post('/update-job/{jobId}',[AccountController::class,'updateJob'])->name('company.updateJob');
-    Route::post('/delete-job',[AccountController::class,'deleteJob'])->name('company.deleteJob');
+    
 });
 
 Route::middleware(['auth', 'isCandidate'])->name('candidate.')->group(function () {
