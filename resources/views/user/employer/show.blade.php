@@ -27,7 +27,7 @@
 
         <!-- Back to Job Listings Button -->
         <div class="mt-8 text-center">
-            <a href="{{ route('employer.index') }}" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg shadow-md transition duration-300 transform hover:scale-105">
+            <a href="{{ route('employer.jobs.index') }}" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg shadow-md transition duration-300 transform hover:scale-105">
                 Back to Job Listings
             </a>
         </div>

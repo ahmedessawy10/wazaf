@@ -8,7 +8,6 @@ use App\Models\Experience;
 use App\Models\JobPosition;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 
 class Candidate extends Model
 {

@@ -15,7 +15,7 @@
     <div class="container">
         <h2 class="mb-4 text-center">Create a New Job Post</h2>
         
-        <form id="postJobForm" method="POST" action="{{ route('employer.store') }}" class="row g-3">
+        <form id="postJobForm" method="POST" action="{{ route('employer.jobs.store') }}" class="row g-3">
             @csrf
 
             <!-- Job Title -->
@@ -124,7 +124,7 @@
 
             <!-- Submit Button -->
             <div class="col-12 d-flex justify-content-between">
-                <!-- <a href="{{ route('employer.index') }}" class="btn btn-outline-secondary">Cancel</a> -->
+                <!-- <a href="{{ route('employer.jobs.index') }}" class="btn btn-outline-secondary">Cancel</a> -->
                 <button type="submit" class="btn btn-primary">Post Job</button>
             </div>
         </form>

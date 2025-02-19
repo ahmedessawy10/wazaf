@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Job Listings</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body class="bg-gray-100 p-8">
     <!-- Container -->
@@ -43,23 +44,23 @@
                             <td class="py-3 px-6 border-b">{{ $job->total_positions }}</td>
                             <td class="py-3 px-6 border-b">{{ ucfirst(str_replace('_', ' ', $job->job_type)) }}</td>
                             <td class="py-3 px-6 border-b">{{ $job->job_location }}</td>
-                            <td class="py-3 px-6 border-b space-x-2">
+                            <td class="py-3 px-6 border-b space-x-2 flex items-center">
                                 <!-- View Button -->
-                                <a href="{{ route('employer.jobs.show', $job->id) }}" class="bg-blue-500 hover:bg-blue-700 text-white py-1 px-4 rounded">
-                                    View
+                                <a href="{{ route('employer.jobs.show', $job->id) }}" class="text-blue-600 hover:text-blue-800">
+                                    <i class="fas fa-eye"></i>
                                 </a>
 
                                 <!-- Edit Button -->
-                                <a href="{{ route('employer.jobs.edit', $job->id) }}" class="bg-yellow-500 hover:bg-yellow-700 text-white py-1 px-4 rounded">
-                                    Edit
+                                <a href="{{ route('employer.jobs.edit', $job->id) }}" class="text-yellow-500 hover:text-yellow-700">
+                                    <i class="fas fa-edit"></i>
                                 </a>
 
                                 <!-- Delete Button -->
                                 <form action="{{ route('employer.jobs.destroy', $job->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this job?');" class="inline-block">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="bg-red-500 hover:bg-red-700 text-white py-1 px-4 rounded">
-                                        Delete
+                                    <button type="submit" class="text-red-500 hover:text-red-700">
+                                        <i class="fas fa-trash-alt"></i>
                                     </button>
                                 </form>
                             </td>
@@ -76,8 +77,13 @@
 
     <!-- Floating Button -->
     <div class="fixed bottom-6 right-6">
-        <a href="{{ route('employer.create') }}" class="bg-blue-600 hover:bg-blue-800 text-white font-bold py-3 px-6 rounded-lg shadow-lg">
+        <a href="{{ route('employer.jobs.create') }}" class="bg-blue-600 hover:bg-blue-800 text-white font-bold py-3 px-6 rounded-lg shadow-lg">
             + Add New Job
+        </a>
+    </div>
+    <div class="fixed bottom-6 left-6">
+        <a href="{{ route('employer.applications.redir') }}" class="bg-blue-600 hover:bg-blue-800 text-white font-bold py-3 px-6 rounded-lg shadow-lg">
+            Approved Jobs
         </a>
     </div>
 </body>

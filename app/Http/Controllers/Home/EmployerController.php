@@ -40,4 +40,53 @@ class EmployerController extends Controller
 
         return view('employers.show', compact('employer'));
     }
+
+public function showApplications()
+    {
+        $employerId = Auth::user()->employers->first()->id; 
+        $pendingApplications = Application::with(['candidate', 'jobListing'])
+            ->where('employer_id', $employerId)
+            ->where('status', 'pending')
+            ->get();
+
+        $acceptedApplications = Application::with(['candidate', 'jobListing'])
+            ->where('employer_id', $employerId)
+            ->where('status', 'approved')
+            ->get();
+
+        return view('employer.applications.index', compact('pendingApplications', 'acceptedApplications'));
+    }
+
+
+    public function viewApplicationDetails($id)
+    {
+        $application = Application::with(['candidate', 'jobListing', 'candidate.user'])
+            ->findOrFail($id);
+        
+        return view('employer.applications.show', compact('application'));
+    }
+
+    public function approveApplication($id)
+    {
+        $application = Application::find($id);
+        
+        if ($application) {
+            $application->status = 'approved';
+            $application->save();
+        }
+
+        return redirect()->route('employer.applications.index');
+    }
+
+    public function rejectApplication($id)
+    {
+        $application = Application::findOrFail($id);
+        
+        if ($application) {
+            $application->status = 'rejected';
+            $application->save();
+        }
+
+        return redirect()->route('employer.applications.index');
+    }
 }

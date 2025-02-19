@@ -16,7 +16,7 @@
     <p><strong>Cover Letter:</strong> {{ $application->cover_letter }}</p>
 
     <h3>Job Information</h3>
-    <p><strong>Job Title:</strong> {{ $application->jobPosition->title }}</p> <!-- Changed jobListing to jobPosition -->
+    <p><strong>Job Title:</strong> {{ $application->jobPosition->title }}</p>
     <p><strong>Job Description:</strong> {{ $application->jobPosition->description }}</p>
 
     <form action="{{ route('employer.applications.approve', $application->id) }}" method="POST" style="display:inline-block;">

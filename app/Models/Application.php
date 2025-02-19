@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Application extends Model
 {
     use HasFactory;
-
+    protected $table = 'job_applications';
     protected $fillable = [
         'candidate_id',
         'employer_id',
@@ -32,3 +32,4 @@ class Application extends Model
         return $this->belongsTo(JobPosition::class);
     }
 }
+

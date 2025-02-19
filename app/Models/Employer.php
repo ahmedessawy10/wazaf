@@ -8,7 +8,7 @@ use App\Models\JobPosition;
 use App\Models\OrganizationType;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+
 
 class Employer extends Model
 {

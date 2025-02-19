@@ -34,7 +34,7 @@ class AuthenticatedSessionController extends Controller
 
             return redirect()->intended(route('candidate.dashboard', absolute: false));
         } elseif (Auth::user()->role == 'employer') {
-            return redirect()->intended(route('company.companyProfile', absolute: false));
+            return redirect()->intended(route('employer.jobs.index', absolute: false));
         }
 
         // return redirect()->intended(route('dashboard', absolute: false));
