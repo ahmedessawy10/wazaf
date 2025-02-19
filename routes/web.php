@@ -41,15 +41,15 @@ Route::middleware('auth')->group(function () {
 // Employer-specific routes
 Route::middleware(['auth', 'isEmployer'])->name('company.')->group(function () {
     Route::get('/comProfile', [AccountController::class, 'comprofile'])->name('companyProfile');
-    Route::put('/update-profile', [AccountController::class, 'updateProfile'])->name('company.updateProfile');
-    Route::get('/logout', [AccountController::class, 'logout'])->name('company.logout');
-    Route::post('/update-profile-img', [AccountController::class, 'updateProfileImg'])->name('company.updateProfileImg');
-    Route::get('/create-job', [AccountController::class, 'createJob'])->name('company.createJob');
-    Route::post('/save-job', [AccountController::class, 'saveJob'])->name('company.saveJob');
-    Route::get('/my-jobs', [AccountController::class, 'myJobs'])->name('company.myJobs');
-    Route::get('/edit-job/edit/{jobId}', [AccountController::class, 'editJob'])->name('company.editJob');
-    Route::post('/update-job/{jobId}', [AccountController::class, 'updateJob'])->name('company.updateJob');
-    Route::post('/delete-job', [AccountController::class, 'deleteJob'])->name('company.deleteJob');
+    Route::put('/update-profile', [AccountController::class, 'updateProfile'])->name('updateProfile');
+    Route::get('/logout', [AccountController::class, 'logout'])->name('logout');
+    Route::post('/update-profile-img', [AccountController::class, 'updateProfileImg'])->name('updateProfileImg');
+    Route::get('/create-job', [AccountController::class, 'createJob'])->name('createJob');
+    Route::post('/save-job', [AccountController::class, 'saveJob'])->name('saveJob');
+    Route::get('/my-jobs', [AccountController::class, 'myJobs'])->name('myJobs');
+    Route::get('/edit-job/edit/{jobId}', [AccountController::class, 'editJob'])->name('editJob');
+    Route::post('/update-job/{jobId}', [AccountController::class, 'updateJob'])->name('updateJob');
+    Route::post('/delete-job', [AccountController::class, 'deleteJob'])->name('deleteJob');
 });
 
 // Candidate-specific routes
@@ -83,14 +83,14 @@ Route::middleware(['auth', 'isEmployer'])->name('employer.')->prefix('employer')
     ]);
     Route::get('applications/approved/show', [ApplicationController::class, 'redirApplication'])->name('applications.redir');
 
-        Route::get('applications/approved', [ApplicationController::class, 'approveApplication'])->name('applications.approve');
-        Route::post('applications/{id}/reject', [ApplicationController::class, 'rejectApplication'])->name('applications.reject');
+    Route::get('applications/approved', [ApplicationController::class, 'approveApplication'])->name('applications.approve');
+    Route::post('applications/{id}/reject', [ApplicationController::class, 'rejectApplication'])->name('applications.reject');
 
-        Route::post('applications/{id}/approve', [ApplicationController::class, 'acceptApplication'])->name('applications.approve');
+    Route::post('applications/{id}/approve', [ApplicationController::class, 'acceptApplication'])->name('applications.approve');
 
     // Route::prefix('employer')->name('employer.')->middleware('auth')->group(function () {
     //     // Route::resource('applications', ApplicationController::class);
-        
+
     // });
 });
 
